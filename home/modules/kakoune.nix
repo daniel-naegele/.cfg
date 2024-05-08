@@ -53,7 +53,7 @@
           "i44pc6.ppd.ipd.kit.edu" = "launch-tmux-workflow";
           "i44pc19" = "launch-tmux-workflow";
           "i44pc30" = "launch-tmux-workflow";
-          "nixos-framework" = "launch-tmux-workflow";
+          "DN-Laptop" = "launch-tmux-workflow";
           "nixos-lt" = "launch-kitty-workflow";
           "Sebastian-PC" = "launch-kitty-workflow"; # FIXME
         }."${hostname}";

@@ -15,19 +15,21 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  # Enable NTFS Fuse FS
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot.initrd.luks.devices = {
+    crypted = {
+      device = "/dev/disks/by-uuid/1c4c0c60-5849-4cd2-9c2a-22008be3b7ce";
+    };
+  };
 
   # Splash screen
   boot.plymouth.enable = true;
 
-  networking.hostName = "nixos-framework"; # Define your hostname.
+  networking.hostName = "DN-Laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant. Not needed when we have networkmanager.
   networking.networkmanager = {
     # although Gnome activates nm by default, it's important we activate it
     # here, too, so that NetworkManager-wait-online succeeds. But seems broken again in 22.11
-    # enable = true;
+    enable = true;
     plugins = [ pkgs.networkmanager-openvpn ];
   };
   # systemd.network.wait-online.anyInterface = true; # https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1273814285
@@ -180,7 +182,7 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    layout = "eu,us";
+    layout = "eu,de";
     xkbOptions = "eurosign:e, caps:swapescape";
     #dpi = 192;
 
@@ -238,19 +240,16 @@
   ####################
 
   users.mutableUsers = false;
-  users.users.sgraf = {
+  users.users.daniel = {
     createHome = true;
-    home = "/home/sgraf";
+    home = "/home/daniel";
     group = "users";
-    description = "Sebastian Graf";
+    description = "Daniel Nägele";
     isNormalUser = true;
     extraGroups = [ "wheel" "audio" "video" "input" "disk" "networkmanager" "libvirtd" ];
     uid = 1000;
     shell = pkgs.zsh;
-    hashedPassword = "$6$/XBcQHtEME$UA6R5al2se/3aodx8mV2XkhhMiAQ1qIBlVCgAOW5nYCtiZtmdj45Dp7DI/r.7AQQS1Op78VniNKgnKOza9TDS."; # mkpasswd -m sha-512
-    openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5CKChZHMUIx7KYIYTgweK8oauSIdA8v2bQIPaO9ln6UwbecoryN7rvjJtV+KB46NG/2CmMBv/NEkkYz+9BU7CR0ierZUzMmvkfxqhlwXbvNpzqvngmSfY/0liHWF9H+/NaG3gY3e7kmM4Vl1MHpE4rzykFHahD9N3owOwbXXsIHXPNCPPZhJY654LLKC5YI1uQPuB8U7MXWKCd54nlL8ePBY7o+cElrOQXMdADAt60M9NH87nhiqq6t4Ytyp72b3oVrDME0bBdtsIu5aqFPqeGk+90Qqdr6Vtwren+mVdZITpH5PelCFoiRcUjuqza+qwIB5hG7IFawtWGvfgqSeB Sebastian@Sebastian-PC"
-    ];
+    hashedPassword = "$6$PeNJjX6DQSKYld6x$XBooBII7i/vvyr72u6zvoa4yNN.S6dWgGh8TZcNIYS3mnVjkeGD.M0Dq30zkD8o4XP5Ual7b7P9AGa4WUb8mv1"; # mkpasswd -m sha-512
   };
   nix.settings.trusted-users = [ "root" "@wheel" ]; # for user-mode cachix
 
@@ -268,12 +267,12 @@
   # };
   # virtualisation.libvirtd.enable = true;
   #virtualisation.virtualbox.host.enable = true; # seems to be broken since Jun 23
-  users.extraGroups.vboxusers.members = [ "sgraf" ];
+  users.extraGroups.vboxusers.members = [ "daniel" ];
   # Unfortunately the extension pack isn't built by Hydra (unfree) and I really
   # don't want to rebuild this all the time
   # virtualisation.virtualbox.host.enableExtensionPack = true;
   virtualisation.docker.enable = true;
-  users.extraGroups.docker.members = [ "sgraf" ];
+  users.extraGroups.docker.members = [ "daniel" ];
 
 
   # This value determines the NixOS release from which the default
@@ -282,7 +281,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 
   # Apparently there is not much sense in doing this, because it doesn't update
   # the lock file (duh)

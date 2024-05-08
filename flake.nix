@@ -17,7 +17,7 @@
   outputs = { self, ... }@inputs:
     with inputs.nixpkgs.lib;
     let
-      username = "sgraf";
+      username = "daniel";
       forEachSystem = genAttrs [ "x86_64-linux" ];
       pkgsBySystem = forEachSystem (system:
         import inputs.nixpkgs {
@@ -167,7 +167,7 @@
       # that host - consumed by the home-manager NixOS module for that host (if it exists)
       # or by `mkHomeManagerHostConfiguration` for home-manager-only hosts.
       homeManagerConfigurations = mapAttrs' mkHomeManagerConfiguration {
-        nixos-framework = { system = "x86_64-linux"; config = ./home/private.nix; };
+        DN-Laptop = { system = "x86_64-linux"; config = ./home/private.nix; };
         nixos-lt = { system = "x86_64-linux"; config = ./home/private.nix; };
         "i44pc6.ppd.ipd.kit.edu" = { system = "x86_64-linux"; config = ./home/work.nix; };
         "i44pc19" = { system = "x86_64-linux"; config = ./home/work.nix; };
@@ -185,8 +185,8 @@
       # Attribute set of hostnames to evaluated NixOS configurations. Consumed by `nixos-rebuild`
       # on those hosts.
       nixosHostConfigurations = mapAttrs' mkNixOsConfiguration {
-        nixos-framework = { system = "x86_64-linux"; config = ./nixos/framework.nix; };
-        nixos-lt = { system = "x86_64-linux"; config = ./nixos/lt.nix; };
+        DN-Laptop = { system = "x86_64-linux"; config = ./nixos/framework.nix; };
+        nixos-lt = { system = "x86_64-linux"; config = ./nixos/framework.nix; };
       };
 
     in

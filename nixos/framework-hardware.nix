@@ -12,19 +12,29 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-
+  # TODO enhance with for loop over several subvols, also for nix store
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ad70bd28-4863-459f-8715-2171f6ee527c";
-      fsType = "ext4";
+    { device = "/dev/mapper/crypted";
+      fsType = "btrfs";
+      options = [ "subvol=nixos" "compress=zstd" ];
+    };
+  fileSystems."/home" =
+    { device = "/dev/mapper/crypted";
+      fsType = "btrfs";
+      options = [ "subvol=home" "compress=zstd" ];
     };
 
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/4e3fc76a-a8a5-456e-a7b8-aae817910268";
+      fsType = "ext4";
+    };
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/243F-2929";
+    { device = "/dev/disk/by-uuid/31E1-D072";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/4e765173-4c7f-4ca7-9ff5-35899f3ee2e5"; }
+    [ 
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

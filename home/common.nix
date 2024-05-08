@@ -109,7 +109,7 @@ in
 
   programs.git = {
     enable = true;
-    userName = "Sebastian Graf";
+    userName = "Daniel Nägele";
     aliases = {
       a = "add";
       ap = "add --patch";
@@ -186,14 +186,14 @@ in
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
-      theme = "robbyrussell";
+      theme = "agnoster";
     };
     initExtra = builtins.readFile zsh/init.zsh;
     sessionVariables = {
       # disable default rprompt...?
       RPROMPT = "";
       # hide user in shell prompt
-      DEFAULT_USER = "sgraf";
+      DEFAULT_USER = "daniel";
       # PAGER = "kak"; # doesn't understand color codes
       EDITOR = "kak";
       hardeningDisable = "fortify";
@@ -305,13 +305,11 @@ in
     time = "de_DE.UTF-8";
   };
 
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.11";
 
   services.rclone = {
     enable = lib.mkDefault true;
     mounts = {
-      onedrive = { from = "OneDrive:/"; to = "${config.home.homeDirectory}/mnt/OneDrive"; };
-      pcloud   = { from = "pCloud:/";   to = "${config.home.homeDirectory}/mnt/pCloud"; };
     };
   };
 }

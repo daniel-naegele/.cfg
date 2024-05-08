@@ -92,10 +92,10 @@ in
     # enable = true;
   };
 
-  programs.git.userEmail = "sgraf1337@gmail.com";
+  programs.git.userEmail = "daniel@naegele.dev";
 
   programs.zsh.shellAliases = {
-    upd = "nix flake update /home/sgraf/code/nix/config/ && sudo nixos-rebuild switch --flake /home/sgraf/code/nix/config/ && . ~/.zshrc";
+    upd = "nix flake update /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/ && . ~/.zshrc";
   };
 
   programs.vscode = {
@@ -118,8 +118,8 @@ in
     };
   };
 
-  home.username = "sgraf";
-  home.homeDirectory = "/home/sgraf";
+  home.username = "daniel";
+  home.homeDirectory = "/home/daniel";
   home.file = {
     ".background-image".source = ./wallpapers/haskell.png;
   };
@@ -127,7 +127,6 @@ in
   services.rclone = {
     enable = true;
     # dropbox only allows 3 devices in its free plan, so we are only installing it at home
-    mounts.dropbox = { from = "Dropbox:/"; to = "${config.home.homeDirectory}/mnt/Dropbox"; };
   };
 
   systemd.user.services = {
