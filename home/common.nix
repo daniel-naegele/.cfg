@@ -38,6 +38,7 @@ in
     # Don't install binutils here; it will interfere with Ubuntu's ld/binutils install. Set it in private.nix instead
     # binutils # ar and stuff
     bottom # alternative to top
+    btop
     cabal2nix
     cabal-install
     cloc

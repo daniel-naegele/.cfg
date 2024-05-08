@@ -17,7 +17,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.initrd.luks.devices = {
     crypted = {
-      device = "/dev/disks/by-uuid/1c4c0c60-5849-4cd2-9c2a-22008be3b7ce";
+      device = "/dev/disk/by-uuid/1c4c0c60-5849-4cd2-9c2a-22008be3b7ce";
     };
   };
 

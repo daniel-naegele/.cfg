@@ -28,6 +28,7 @@ in
     ./modules/dconf.nix
     ./modules/kitty.nix
     ./modules/rclone.nix
+    ./modules/gpg.nix
   ];
 
   home.packages = with pkgs; [
