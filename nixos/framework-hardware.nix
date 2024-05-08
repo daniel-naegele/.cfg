@@ -10,6 +10,8 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" ];
   boot.initrd.kernelModules = [ ];
+  boot.resumeDevice = "/dev/disk/by-uuid/4497e628-ed1a-4bfe-bda3-db117931f659";
+  boot.kernelParams = [ "resume_offset=149754929" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   # TODO enhance with for loop over several subvols, also for nix store
@@ -23,6 +25,11 @@
       fsType = "btrfs";
       options = [ "subvol=home" "compress=zstd" ];
     };
+  fileSystems."/swap" =
+    { device = "/dev/mapper/crypted";
+      fsType = "btrfs";
+      options = [ "subvol=swap" "noatime" "compress=no"];
+    };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/4e3fc76a-a8a5-456e-a7b8-aae817910268";
@@ -33,10 +40,7 @@
       fsType = "vfat";
     };
 
-  swapDevices =
-    [ 
-    ];
-
+  swapDevices = [ { device = "/swap/swapfile"; } ];
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
