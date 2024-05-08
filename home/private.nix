@@ -36,6 +36,7 @@ in
     # discord # somehow broken.. can't satisfy libasound
     file
     dconf # some tools need this to preserve settings
+    discord
     gnome.gnome-tweaks
     gnome.gnome-shell-extensions
     gnomeExtensions.bluetooth-quick-connect
@@ -51,11 +52,13 @@ in
     hicolor-icon-theme
     libreoffice
     nmap
+    unstable.obsidian
     okular
     pavucontrol
     pmutils
     powertop
     python3
+    slack
     spotify
     texlive.combined.scheme-full
     thunderbird
