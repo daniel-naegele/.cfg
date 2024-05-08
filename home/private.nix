@@ -61,8 +61,10 @@ in
     slack
     spotify
     texlive.combined.scheme-full
+    tidal-hifi
     thunderbird
     # virtmanager # Needs virtualisation.libvirtd.enable = true; in configuration.nix and is currently deactivated
+    vesktop
     vlc
     w3m
     xorg.xprop
