@@ -214,7 +214,7 @@ in
       info = "info --vi-keys";
       ls = "eza --color=automatic";
       l = "ls -l";
-      ll = "l --group --header --links --extended --git";
+      ll = "ls -la";
       la = "ll -a";
       p = "(){ ${pkgs.python3}/bin/python -c \"from math import *; print($@);\" }"; # https://stackoverflow.com/questions/34340575/zsh-alias-with-parameter#comment108551041_39395740
       rg-sed = ''() {

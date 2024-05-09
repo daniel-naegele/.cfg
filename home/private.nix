@@ -50,6 +50,7 @@ in
     gucharmap
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
+    jetbrains-toolbox
     libreoffice
     nmap
     unstable.obsidian
@@ -102,6 +103,7 @@ in
 
   programs.zsh.shellAliases = {
     upd = "nix flake update /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/ && . ~/.zshrc";
+    switch = "sudo nixos-rebuild switch --flake /home/daniel/code/nix/config";
   };
 
   programs.vscode = {
