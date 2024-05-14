@@ -37,6 +37,7 @@ in
     file
     dconf # some tools need this to preserve settings
     discord
+    gimp
     gnome.gnome-tweaks
     gnome.gnome-shell-extensions
     gnomeExtensions.bluetooth-quick-connect
