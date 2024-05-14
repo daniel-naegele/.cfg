@@ -57,6 +57,7 @@ in
     unstable.obsidian
     okular
     pavucontrol
+    unstable.pferd
     pmutils
     powertop
     python3
@@ -66,6 +67,7 @@ in
     tidal-hifi
     thunderbird
     # virtmanager # Needs virtualisation.libvirtd.enable = true; in configuration.nix and is currently deactivated
+    unityhub
     vesktop
     vlc
     w3m
