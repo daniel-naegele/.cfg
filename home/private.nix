@@ -54,6 +54,7 @@ in
     #jetbrains.idea-ultimate
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
     libreoffice
+    nextcloud-client
     nmap
     unstable.obsidian
     okular
@@ -62,6 +63,7 @@ in
     pmutils
     powertop
     python3
+    signal-desktop
     slack
     spotify
     texlive.combined.scheme-full
