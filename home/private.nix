@@ -33,10 +33,9 @@ in
 
   home.packages = with pkgs; [
     binutils # ar and stuff
-    # discord # somehow broken.. can't satisfy libasound
-    file
     dconf # some tools need this to preserve settings
     discord
+    file
     gimp
     gnome.gnome-tweaks
     gnome.gnome-shell-extensions
@@ -51,7 +50,9 @@ in
     gucharmap
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
-    jetbrains-toolbox
+    # jetbrains-toolbox
+    #jetbrains.idea-ultimate
+    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
     libreoffice
     nmap
     unstable.obsidian
