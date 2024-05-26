@@ -63,6 +63,7 @@ in
     pmutils
     powertop
     python3
+    qbittorrent
     signal-desktop
     slack
     spotify
