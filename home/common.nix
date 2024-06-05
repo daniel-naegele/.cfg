@@ -201,6 +201,7 @@ in
     };
     shellAliases = {
       cdc = "cd ~/code/nix/config";
+      cdnxt = "cd ~/code/rautemusik/nxt_radio";
       cdnix = "cd ~/code/nix/nixpkgs && git checkout master && git pull";
       nix-zsh = "nix-shell --command zsh";
       nix-stray-roots = "nix-store --gc --print-roots | egrep -v '^(/nix/var|/run/\\w+-system|\\{memory)' | cut -d' ' -f1";
@@ -212,7 +213,6 @@ in
       exf = "fzf --exact"; # not FuZzy, but EXact
       less = ''\less -XFR'';
       info = "info --vi-keys";
-      ls = "eza --color=automatic";
       l = "ls -l";
       ll = "ls -la";
       la = "ll -a";
