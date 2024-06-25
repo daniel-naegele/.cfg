@@ -54,6 +54,7 @@ in
     #jetbrains.idea-ultimate
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
     libreoffice
+    minio-client
     nextcloud-client
     nmap
     unstable.obsidian
