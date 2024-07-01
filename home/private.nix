@@ -35,6 +35,7 @@ in
     binutils # ar and stuff
     dconf # some tools need this to preserve settings
     discord
+    ffmpeg
     file
     gimp
     gnome.gnome-tweaks
@@ -47,17 +48,20 @@ in
     gnomeExtensions.window-calls-extended
     gnomeExtensions.vertical-overview
     google-chrome
+    gpu-screen-recorder
     gucharmap
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
     # jetbrains-toolbox
     #jetbrains.idea-ultimate
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
+    jetbrains.rider
     libreoffice
     minio-client
     nextcloud-client
     nmap
     unstable.obsidian
+    obs-studio
     okular
     pavucontrol
     unstable.pferd
@@ -77,6 +81,7 @@ in
     vlc
     w3m
     xorg.xprop
+    zip
     zoom-us
 
     # Haskell/Cabal/Stack stuff
