@@ -102,13 +102,13 @@ in
         # hide window: disable <super>h
         minimize = [ "<super>comma" ];
         # switch to workspace left: disable <super>left
-        switch-to-workspace-left = [];
+        switch-to-workspace-left = [ "<primary><super>left" ];
         # switch to workspace right: disable <super>right
-        switch-to-workspace-right = [];
+        switch-to-workspace-right = [ "<primary><super>right" ];
         # maximize window: disable <super>up
-        maximize = [];
+        maximize = [ "<super>up" ];
         # restore window: disable <super>down
-        unmaximize = [];
+        unmaximize = [ "<super>down" ];
         # move to monitor up: disable <super><shift>up
         move-to-monitor-up = [];
         # move to monitor down: disable <super><shift>down
@@ -133,6 +133,7 @@ in
         close = [ "<super>q" "<alt>f4" ];
         # Instead of switch-applications
         switch-windows = [ "<alt>Tab" ];
+        switch-windows-backwards = [ "<alt><shift>Tab" ];
       };
       "org/gnome/shell/keybindings" = {
         open-application-menu = [];
@@ -142,13 +143,13 @@ in
         toggle-overview = [];
       };
       "org/gnome/mutter/keybindings" = {
-        # disable tiling to left / right of screen
-        toggle-tiled-left = [];
-        toggle-tiled-right = [];
+        # do not disable tiling to left / right of screen
+        # toggle-tiled-left = [];
+        # toggle-tiled-right = [];
       };
       "org/gnome/settings-daemon/plugins/media-keys" = {
         # lock screen
-        screensaver = [ "<super>escape" ];
+        screensaver = [ "<super>l" ];
         # home folder
         home = [ "<super>f" ];
         # launch email client
