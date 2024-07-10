@@ -198,6 +198,7 @@ in
       # PAGER = "kak"; # doesn't understand color codes
       EDITOR = "kak";
       hardeningDisable = "fortify";
+      CHROME_EXECUTABLE = "google-chrome-stable";
     };
     shellAliases = {
       cdc = "cd ~/code/nix/config";

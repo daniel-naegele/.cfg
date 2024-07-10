@@ -252,7 +252,7 @@
     group = "users";
     description = "Daniel Nägele";
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "input" "disk" "networkmanager" "libvirtd" ];
+    extraGroups = [ "wheel" "audio" "video" "input" "disk" "networkmanager" "libvirtd" "dialout" "tailscale"];
     uid = 1000;
     shell = pkgs.zsh;
     hashedPassword = "$6$PeNJjX6DQSKYld6x$XBooBII7i/vvyr72u6zvoa4yNN.S6dWgGh8TZcNIYS3mnVjkeGD.M0Dq30zkD8o4XP5Ual7b7P9AGa4WUb8mv1"; # mkpasswd -m sha-512
