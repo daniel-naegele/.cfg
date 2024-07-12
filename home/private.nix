@@ -69,6 +69,7 @@ in
     powertop
     python3
     qbittorrent
+    screen
     signal-desktop
     slack
     spotify
