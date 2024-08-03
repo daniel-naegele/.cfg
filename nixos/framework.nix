@@ -34,6 +34,8 @@
   };
   # systemd.network.wait-online.anyInterface = true; # https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1273814285
   systemd.services.NetworkManager-wait-online.enable = false; # https://github.com/NixOS/nixpkgs/issues/59603#issuecomment-1304869994
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -197,6 +199,8 @@
     #displayManager.gdm.debug = true;
     desktopManager.gnome.enable = true;
     #desktopManager.gnome.debug = true;
+    displayManager.autoLogin.enable = true;
+    displayManager.autoLogin.user = "daniel";
 
     # Enable touchpad support (enabled default in most desktopManagers).
     libinput = {
