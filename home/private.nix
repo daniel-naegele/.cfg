@@ -33,8 +33,10 @@ in
 
   home.packages = with pkgs; [
     binutils # ar and stuff
+    cmake
     dconf # some tools need this to preserve settings
     discord
+    ethtool
     ffmpeg
     file
     gimp
@@ -42,12 +44,14 @@ in
     gnome.gnome-shell-extensions
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.clipboard-indicator
+    gnomeExtensions.color-picker
     gnomeExtensions.system-monitor
     gnomeExtensions.impatience
     gnomeExtensions.pop-shell
     gnomeExtensions.window-calls-extended
     gnomeExtensions.vertical-overview
     google-chrome
+    gpick
     gpu-screen-recorder
     gucharmap
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
@@ -59,6 +63,7 @@ in
     libreoffice
     minio-client
     nextcloud-client
+    ninja
     nmap
     unstable.obsidian
     obs-studio

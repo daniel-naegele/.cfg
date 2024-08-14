@@ -13,8 +13,9 @@
   boot.resumeDevice = "/dev/disk/by-uuid/4497e628-ed1a-4bfe-bda3-db117931f659";
   boot.kernelParams = [ "resume_offset=149754929" ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.kernel.sysctl = { "vm.swappiness" = 0; };
+  boot.kernel.sysctl = { "vm.swappiness" = 1; };
   boot.extraModulePackages = [ ];
+
   # TODO enhance with for loop over several subvols, also for nix store
   fileSystems."/" =
     { device = "/dev/mapper/crypted";
