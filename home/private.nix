@@ -36,6 +36,7 @@ in
     cmake
     dconf # some tools need this to preserve settings
     discord
+    esptool
     ethtool
     ffmpeg
     file
@@ -61,6 +62,7 @@ in
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
     jetbrains.rider
     libreoffice
+    losslesscut-bin
     minio-client
     nextcloud-client
     ninja
@@ -84,7 +86,9 @@ in
     # virtmanager # Needs virtualisation.libvirtd.enable = true; in configuration.nix and is currently deactivated
     unityhub
     vesktop
+    video-trimmer
     vlc
+    wireshark
     w3m
     xorg.xprop
     zip
