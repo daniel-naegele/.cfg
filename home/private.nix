@@ -36,6 +36,7 @@ in
     cmake
     dconf # some tools need this to preserve settings
     discord
+    envoy
     esptool
     ethtool
     ffmpeg
@@ -71,6 +72,7 @@ in
     obs-studio
     okular
     pavucontrol
+    postgresql_16
     unstable.pferd
     pmutils
     powertop
@@ -88,6 +90,7 @@ in
     vesktop
     video-trimmer
     vlc
+    whatsapp-for-linux
     wireshark
     w3m
     xorg.xprop
