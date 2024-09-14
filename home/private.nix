@@ -71,6 +71,7 @@ in
     unstable.obsidian
     obs-studio
     okular
+    unstable.ollama
     pavucontrol
     postgresql_16
     unstable.pferd
