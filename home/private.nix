@@ -80,7 +80,7 @@ in
     python3
     qbittorrent
     screen
-    signal-desktop
+    unstable.signal-desktop
     slack
     spotify
     texlive.combined.scheme-full
