@@ -58,6 +58,7 @@ in
     gucharmap
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
+    unstable.inkscape
     # jetbrains-toolbox
     #jetbrains.idea-ultimate
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
