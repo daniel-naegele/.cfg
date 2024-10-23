@@ -107,6 +107,7 @@
   services.udev.packages = with pkgs; [
     gnome3.gnome-settings-daemon
     yubikey-personalization
+    android-udev-rules
   ];
 
   # Shoot things when there's less than 2% RAM
@@ -151,6 +152,7 @@
       };
     };
   };
+
 
   services.tailscale = {
     enable = true;

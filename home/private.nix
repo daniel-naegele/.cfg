@@ -36,6 +36,7 @@ in
     cmake
     dconf # some tools need this to preserve settings
     discord
+    element-desktop
     envoy
     esptool
     ethtool
@@ -87,6 +88,7 @@ in
     texlive.combined.scheme-full
     tidal-hifi
     thunderbird
+    tor-browser
     # virtmanager # Needs virtualisation.libvirtd.enable = true; in configuration.nix and is currently deactivated
     unityhub
     vesktop
