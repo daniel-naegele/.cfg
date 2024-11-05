@@ -67,6 +67,7 @@ in
     man-pages
     moreutils
     ncdu
+    neofetch
     # ncurses # the libtinfo uses a glibc that is often too new. That confuses GHC
     niv
     nix#Flakes
@@ -203,6 +204,7 @@ in
       cdc = "cd ~/code/nix/config";
       cdnxt = "cd ~/code/rautemusik/nxt_radio";
       cdnix = "cd ~/code/nix/nixpkgs && git checkout master && git pull";
+      cdwasa = "/run/user/1000/gvfs/smb-share:server=sccfs.scc.kit.edu,share=oe/TM/VR/Mitglieder";
       nix-zsh = "nix-shell --command zsh";
       nix-stray-roots = "nix-store --gc --print-roots | egrep -v '^(/nix/var|/run/\\w+-system|\\{memory)' | cut -d' ' -f1";
       tmux-display = "export DISPLAY=$(tmux show-env | sed -n 's/^DISPLAY=//p')";
@@ -266,7 +268,7 @@ in
     tmux.enableShellIntegration = true;
   };
 
-  services.emacs.enable = true;
+  services.emacs.enable = false;
   programs.doom-emacs = rec {
     enable = lib.mkDefault false; # Too much churn for how often I use it
     doomPrivateDir = ./doom.d;

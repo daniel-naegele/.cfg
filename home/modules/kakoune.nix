@@ -27,13 +27,6 @@
         enableMouse = false;
         setTitle = true;
       };
-      showWhitespace = {
-        enable = true;
-        # We only do this to see tabs
-        lineFeed = " ";
-        space = " ";
-        nonBreakingSpace = " ";
-      };
     };
     plugins = with pkgs.kakounePlugins; [
       # kak-fzf             # fzf mode, not needed with broot
@@ -44,7 +37,6 @@
       # balancing!
       # kak-auto-pairs    # Auto close parens, etc.
       kak-buffers         # smarter buffer movements # superseded by tabs-kak
-      tabs-kak
     ];
     extraConfig =
       let

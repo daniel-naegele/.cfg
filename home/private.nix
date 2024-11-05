@@ -48,11 +48,9 @@ in
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.color-picker
-    gnomeExtensions.system-monitor
     gnomeExtensions.impatience
     gnomeExtensions.pop-shell
     gnomeExtensions.window-calls-extended
-    gnomeExtensions.vertical-overview
     google-chrome
     gpick
     gpu-screen-recorder
@@ -80,7 +78,6 @@ in
     pmutils
     powertop
     python3
-    qbittorrent
     screen
     unstable.signal-desktop
     slack
