@@ -51,6 +51,7 @@ in
     gnomeExtensions.impatience
     gnomeExtensions.pop-shell
     gnomeExtensions.window-calls-extended
+    go
     google-chrome
     gpick
     gpu-screen-recorder

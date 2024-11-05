@@ -122,7 +122,7 @@
             {
               home-manager.useUserPackages = true;
               home-manager.useGlobalPkgs = true;
-              home-manager.backupFileExtension = "bak";
+              home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = homeManagerConfigurations."${hostname}";
               home-manager.extraSpecialArgs = {
                 inherit hostname inputs;
