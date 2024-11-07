@@ -33,6 +33,7 @@ in
 
   home.packages = with pkgs; [
     binutils # ar and stuff
+    cifs-utils
     cmake
     dconf # some tools need this to preserve settings
     discord
@@ -79,6 +80,7 @@ in
     pmutils
     powertop
     python3
+    samba
     screen
     unstable.signal-desktop
     slack
@@ -88,6 +90,7 @@ in
     thunderbird
     tor-browser
     # virtmanager # Needs virtualisation.libvirtd.enable = true; in configuration.nix and is currently deactivated
+    umlet
     unityhub
     vesktop
     video-trimmer
