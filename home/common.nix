@@ -75,7 +75,6 @@ in
     nix-index
     nix-prefetch-scripts
     nixpkgs-review
-    nofib-analyse # see overlay
     p7zip
     # parallel # GNU parallel + env_parallel, clashes with moreutils
     sd
@@ -92,7 +91,7 @@ in
     vlc
   ];
 
-  programs.command-not-found.enable = true;
+  programs.command-not-found.enable = false;
 
   programs.zathura.enable = true;
 

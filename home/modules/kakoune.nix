@@ -47,7 +47,7 @@
           "i44pc30" = "launch-tmux-workflow";
           "DN-Laptop" = "launch-tmux-workflow";
           "nixos-lt" = "launch-kitty-workflow";
-          "Sebastian-PC" = "launch-kitty-workflow"; # FIXME
+          "Daniel-PC" = "launch-tmux-workflow";
         }."${hostname}";
       in ''
       hook global ModuleLoaded powerline %{

@@ -172,14 +172,14 @@
         "i44pc6.ppd.ipd.kit.edu" = { system = "x86_64-linux"; config = ./home/work.nix; };
         "i44pc19" = { system = "x86_64-linux"; config = ./home/work.nix; };
         "i44pc30" = { system = "x86_64-linux"; config = ./home/work.nix; };
-        Sebastian-PC = { system = "x86_64-linux"; config = ./home/pengwin.nix; };
+        Daniel-PC = { system = "x86_64-linux"; config = ./home/wsl.nix; };
       };
 
       homeManagerHostConfigurations = mapAttrs' mkHomeManagerHostConfiguration {
         "i44pc6.ppd.ipd.kit.edu" = { system = "x86_64-linux"; username = "sgraf-local"; };
         "i44pc19" = { system = "x86_64-linux"; username = "sgraf-local"; };
         "i44pc30" = { system = "x86_64-linux"; username = "sgraf-local"; };
-        Sebastian-PC = { system = "x86_64-linux"; username = "sgraf"; };
+        Daniel-PC = { system = "x86_64-linux"; username = "nixos"; };
       };
 
       # Attribute set of hostnames to evaluated NixOS configurations. Consumed by `nixos-rebuild`
