@@ -34,39 +34,19 @@ in
     binutils # ar and stuff
     cifs-utils
     cmake
-    dconf # some tools need this to preserve settings
     envoy
-    esptool
-    ethtool
     ffmpeg
     file
-    gimp
-    gnome.gnome-tweaks
-    gnome.gnome-shell-extensions
-    gnomeExtensions.bluetooth-quick-connect
-    gnomeExtensions.clipboard-indicator
-    gnomeExtensions.color-picker
-    gnomeExtensions.impatience
-    gnomeExtensions.pop-shell
-    gnomeExtensions.window-calls-extended
     go
-    google-chrome
-    gpick
-    gpu-screen-recorder
     gucharmap
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
-    unstable.inkscape
     # jetbrains-toolbox
     #jetbrains.idea-ultimate
-    libreoffice
     losslesscut-bin
     minio-client
     ninja
     nmap
-    unstable.obsidian
-    obs-studio
-    okular
     unstable.ollama
     pavucontrol
     postgresql_16
@@ -76,13 +56,9 @@ in
     python3
     samba
     # virtmanager # Needs virtualisation.libvirtd.enable = true; in configuration.nix and is currently deactivated
-    umlet
-    unityhub
     video-trimmer
-    vlc
     w3m
     zip
-    zoom-us
 
     # Haskell/Cabal/Stack stuff
     # haskell-ci # old version, can't get it to work on unstable either

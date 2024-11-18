@@ -121,7 +121,7 @@ autocmd FileType tex setlocal norelativenumber
 autocmd FileType lhaskell setlocal norelativenumber
 
 " Toggle relative line numbers
-nmap <C-L><C-L> :set invrelativenumber<CR>
+" nmap <C-L><C-L> :set invrelativenumber<CR>
 
 " Properly disable sound on errors on MacVim
 if has("gui_macvim")
