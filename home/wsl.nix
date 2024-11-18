@@ -115,8 +115,8 @@ in
   programs.git.userEmail = "daniel@naegele.dev";
 
   programs.zsh.shellAliases = {
-    upd = "nix flake update /home/nixos/code/nix/config/ && home-manager switch --flake /home/nixos/code/nix/config/ && . ~/.zshrc";
-    switch = "home-manager switch --flake /home/nixos/code/nix/config";
+    upd = "nix flake update /home/nixos/code/nix/config/ && sudo nixos-rebuild switch --flake /home/nixos/code/nix/config/ && . ~/.zshrc";
+    switch = "sudo nixos-rebuild switch --flake /home/nixos/code/nix/config";
   };
 
   programs.vscode = {

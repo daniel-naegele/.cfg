@@ -11,13 +11,14 @@
     nofib.url = git+https://gitlab.haskell.org/ghc/nofib?ref=wip/input-utf8;
     nofib.flake = false;
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    nixos-wsl.url = "github:nix-community/nixos-wsl";
   };
 
   # Taken from https://github.com/davidtwco/veritas/blob/master/flake.nix
-  outputs = { self, ... }@inputs:
+  outputs = { self, nixos-wsl, ... }@inputs:
     with inputs.nixpkgs.lib;
     let
-      username = "daniel";
+      #username = "daniel";
       forEachSystem = genAttrs [ "x86_64-linux" ];
       pkgsBySystem = forEachSystem (system:
         import inputs.nixpkgs {
@@ -78,10 +79,11 @@
           };
         });
 
-      mkNixOsConfiguration = hostname: { system, config }:
+      mkNixOsConfiguration = hostname: { system, config, username }:
         nameValuePair hostname (nixosSystem {
           inherit system;
           modules = [
+            nixos-wsl.nixosModules.wsl
             ({ inputs, hostname, pkgs, ... }: {
               # Set the hostname to the name of the configuration being applied (since the
               # configuration being applied is determined by the hostname).
@@ -179,14 +181,14 @@
         "i44pc6.ppd.ipd.kit.edu" = { system = "x86_64-linux"; username = "sgraf-local"; };
         "i44pc19" = { system = "x86_64-linux"; username = "sgraf-local"; };
         "i44pc30" = { system = "x86_64-linux"; username = "sgraf-local"; };
-        Daniel-PC = { system = "x86_64-linux"; username = "nixos"; };
+        # Daniel-PC = { system = "x86_64-linux"; username = "nixos"; };
       };
 
       # Attribute set of hostnames to evaluated NixOS configurations. Consumed by `nixos-rebuild`
       # on those hosts.
       nixosHostConfigurations = mapAttrs' mkNixOsConfiguration {
-        DN-Laptop = { system = "x86_64-linux"; config = ./nixos/framework.nix; };
-        nixos-lt = { system = "x86_64-linux"; config = ./nixos/framework.nix; };
+        DN-Laptop = { system = "x86_64-linux"; config = ./nixos/framework.nix; username = "daniel"; };
+        Daniel-PC = { system = "x86_64-linux"; config = ./nixos/wsl.nix; username = "nixos"; };
       };
 
     in
