@@ -42,7 +42,8 @@ in
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
     # jetbrains-toolbox
-    #jetbrains.idea-ultimate
+    # jetbrains.idea-ultimate
+    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
     losslesscut-bin
     minio-client
     ninja
@@ -56,6 +57,7 @@ in
     python3
     samba
     # virtmanager # Needs virtualisation.libvirtd.enable = true; in configuration.nix and is currently deactivated
+    vesktop
     video-trimmer
     w3m
     zip

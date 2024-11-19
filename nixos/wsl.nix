@@ -8,9 +8,21 @@
 { config, lib, pkgs, ... }:
 
 {
-  wsl.enable = true;
-  wsl.defaultUser = "nixos";
-  wsl.wslConf.network.hostname = "Daniel-PC";
+  wsl = {
+    enable = true;
+    defaultUser = "nixos";
+    startMenuLaunchers = true;
+    nativeSystemd = true;
+    useWindowsDriver = true;
+
+    interop.register = true;
+    wslConf.interop.enabled = true;
+    wslConf.interop.appendWindowsPath = true;
+    wslConf.network.hostname = "Daniel-PC";
+
+    docker-desktop.enable = false;
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It's perfectly fine and recommended to leave
@@ -19,6 +31,7 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
+  users.allowNoPasswordLogin = true;
   users.users.nixos = {
     shell = pkgs.zsh;
   };
@@ -175,4 +188,30 @@
   };
 
   security.pki.certificateFiles = [ "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" ];
+
+  # Fixes Home-Manager applications not appearing in Start Menu
+  system.activationScripts.copy-user-launchers = lib.stringAfter [ ] ''
+    for x in applications icons; do
+      echo "setting up /usr/share/''${x}..."
+      targets=()
+      if [[ -d "/etc/profiles/per-user/${config.wsl.defaultUser}/share/$x" ]]; then
+        targets+=("/etc/profiles/per-user/${config.wsl.defaultUser}/share/$x/.")
+      fi
+
+      if (( ''${#targets[@]} != 0 )); then
+        mkdir -p "/usr/share/$x"
+        ${pkgs.rsync}/bin/rsync -ar --delete-after "''${targets[@]}" "/usr/share/$x"
+      else
+        rm -rf "/usr/share/$x"
+      fi
+    done
+  '';
+
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+    autoPrune.enable = true;
+    enableNvidia = lib.mkForce false;
+  };
+  users.extraGroups.docker.members = [ "nixos" ];
 }
