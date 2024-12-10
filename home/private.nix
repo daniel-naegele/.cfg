@@ -43,6 +43,7 @@ in
     ethtool
     ffmpeg
     file
+    fontforge-gtk
     gimp
     gnome.gnome-tweaks
     gnome.gnome-shell-extensions
@@ -63,6 +64,7 @@ in
     # jetbrains-toolbox
     #jetbrains.idea-ultimate
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
+    jetbrains.goland
     jetbrains.rider
     libreoffice
     losslesscut-bin
@@ -75,6 +77,7 @@ in
     okular
     unstable.ollama
     pavucontrol
+    pdfarranger
     postgresql_16
     unstable.pferd
     pmutils
@@ -85,6 +88,7 @@ in
     unstable.signal-desktop
     slack
     spotify
+    teams-for-linux
     texlive.combined.scheme-full
     tidal-hifi
     thunderbird

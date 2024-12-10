@@ -89,11 +89,11 @@ in
     xclip # Maybe use clipit instead?
     xdg_utils
     vlc
+    wl-color-picker
+    wl-clipboard
   ];
 
   programs.command-not-found.enable = false;
-
-  programs.zathura.enable = true;
 
   programs.broot = {
     enable = true;
