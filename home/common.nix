@@ -91,6 +91,7 @@ in
     vlc
     wl-color-picker
     wl-clipboard
+    zoxide
   ];
 
   programs.command-not-found.enable = false;
@@ -178,6 +179,11 @@ in
       tabular              # Also aligns stuff
       tagbar               # ctags
     ];
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.zsh = {
