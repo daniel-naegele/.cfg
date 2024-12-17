@@ -105,7 +105,7 @@
   services.dbus.enable = true;
   services.dbus.packages = with pkgs; [ dconf ];
   services.udev.packages = with pkgs; [
-    gnome3.gnome-settings-daemon
+    gnome-settings-daemon
     yubikey-personalization
     android-udev-rules
   ];
@@ -213,7 +213,6 @@
   ];
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;

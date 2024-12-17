@@ -87,7 +87,7 @@ in
     tealdeer
     tree
     xclip # Maybe use clipit instead?
-    xdg_utils
+    xdg-utils
     vlc
     wl-color-picker
     wl-clipboard

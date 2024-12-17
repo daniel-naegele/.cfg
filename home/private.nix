@@ -45,8 +45,8 @@ in
     file
     fontforge-gtk
     gimp
-    gnome.gnome-tweaks
-    gnome.gnome-shell-extensions
+    gnome-tweaks
+    gnome-shell-extensions
     gnomeExtensions.bluetooth-quick-connect
     gnomeExtensions.clipboard-indicator
     gnomeExtensions.color-picker
@@ -65,7 +65,6 @@ in
     #jetbrains.idea-ultimate
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
     jetbrains.goland
-    jetbrains.rider
     libreoffice
     losslesscut-bin
     minio-client
