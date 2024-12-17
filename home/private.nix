@@ -69,6 +69,7 @@ in
     losslesscut-bin
     minio-client
     nextcloud-client
+    nil
     ninja
     nixd
     nmap
@@ -284,9 +285,10 @@ in
             dark = "One Dark";
         };
         show_whitespaces = "all" ;
-        ui_font_size = 16;
-        buffer_font_size = 24;
+        ui_font_size = 24;
+        buffer_font_size = 20;
         buffer_line_height = "comfortable";
+        auto_save = "on_focus_change";
     };
   };
 
