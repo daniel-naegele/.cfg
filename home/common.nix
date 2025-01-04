@@ -218,6 +218,7 @@ in
       e = "kak";
       el = "kak -E 'colorscheme solarized-light'";
       exf = "fzf --exact"; # not FuZzy, but EXact
+      k = "kubectl";
       less = ''\less -XFR'';
       info = "info --vi-keys";
       l = "ls -l";

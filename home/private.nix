@@ -43,6 +43,7 @@ in
     ethtool
     ffmpeg
     file
+    fluxcd
     fontforge-gtk
     gimp
     gnome-tweaks
@@ -65,6 +66,8 @@ in
     #jetbrains.idea-ultimate
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
     jetbrains.goland
+    kind
+    kubectl
     libreoffice
     losslesscut-bin
     minio-client
@@ -289,7 +292,8 @@ in
         ui_font_size = 24;
         buffer_font_size = 20;
         buffer_line_height = "comfortable";
-        auto_save = "on_focus_change";
+        autosave = "on_focus_change";
+        restore_on_startup = "last_session";
     };
   };
 

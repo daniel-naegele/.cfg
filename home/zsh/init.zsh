@@ -206,3 +206,7 @@ function lsghc() {
     fi
   done | column -t -s $'\t'
 }
+
+# Completions
+source <(kubectl completion zsh)
+source <(flux completion zsh)
