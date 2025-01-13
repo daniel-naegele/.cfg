@@ -32,6 +32,7 @@ in
   ];
 
   home.packages = with pkgs; [
+    baobab
     binutils # ar and stuff
     cifs-utils
     cmake
@@ -144,6 +145,7 @@ in
   programs.zsh.shellAliases = {
     upd = "nix flake update --flake /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/ && . ~/.zshrc";
     switch = "sudo nixos-rebuild switch --flake /home/daniel/code/nix/config";
+    gc = "nix-collect-garbage --delete-older-than 14d";
   };
 
   programs.vscode = {
