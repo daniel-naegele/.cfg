@@ -210,3 +210,4 @@ function lsghc() {
 # Completions
 source <(kubectl completion zsh)
 source <(flux completion zsh)
+source <(buf completion zsh)

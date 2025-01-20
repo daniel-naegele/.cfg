@@ -33,6 +33,7 @@ in
 
   home.packages = with pkgs; [
     baobab
+    buf
     binutils # ar and stuff
     cifs-utils
     cmake
