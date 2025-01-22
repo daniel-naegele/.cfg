@@ -327,7 +327,13 @@
   # Unfortunately the extension pack isn't built by Hydra (unfree) and I really
   # don't want to rebuild this all the time
   # virtualisation.virtualbox.host.enableExtensionPack = true;
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      bip = "192.168.2.0/17";
+      fixed-cidr = "192.168.2.1/17";
+    };
+  };
   users.extraGroups.docker.members = [ "daniel" ];
 
 

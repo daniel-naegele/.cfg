@@ -60,6 +60,7 @@ in
     google-chrome
     gpick
     gpu-screen-recorder
+    grpcurl
     gucharmap
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
@@ -88,6 +89,7 @@ in
     unstable.pferd
     pmutils
     powertop
+    protobuf
     python3
     qbittorrent
     samba
@@ -106,6 +108,7 @@ in
     vesktop
     video-trimmer
     vlc
+    wakatime-cli
     whatsapp-for-linux
     wireshark
     w3m
