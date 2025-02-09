@@ -33,6 +33,8 @@ in
 
   home.packages = with pkgs; [
     baobab
+    bitwarden
+    bitwarden-cli
     buf
     binutils # ar and stuff
     cifs-utils
