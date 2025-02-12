@@ -39,6 +39,7 @@ in
     # binutils # ar and stuff
     bottom # alternative to top
     btop
+    buf
     cabal2nix
     cabal-install
     cloc
@@ -49,7 +50,9 @@ in
     evince
     eza
     fd
+    fluxcd
     ghc
+    grpcurl
     (pkgs.writeShellScriptBin "ghc94" ''exec -a $0 ${haskell.compiler.ghc94}/bin/ghc "$@"'')
     (pkgs.writeShellScriptBin "ghc96" ''exec -a $0 ${haskell.compiler.ghc96}/bin/ghc "$@"'')
     glow # CLI markdown viewer
@@ -63,6 +66,8 @@ in
     htop
     iosevka
     jq # Manipulating JSON on the CLI
+    kind
+    kubectl
     man
     man-pages
     moreutils
@@ -75,6 +80,7 @@ in
     nix-index
     nix-prefetch-scripts
     nixpkgs-review
+    protobuf
     p7zip
     # parallel # GNU parallel + env_parallel, clashes with moreutils
     sd

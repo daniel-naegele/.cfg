@@ -35,7 +35,6 @@ in
     baobab
     bitwarden
     bitwarden-cli
-    buf
     binutils # ar and stuff
     cifs-utils
     cmake
@@ -47,7 +46,6 @@ in
     ethtool
     ffmpeg
     file
-    fluxcd
     fontforge-gtk
     gimp
     gnome-tweaks
@@ -62,7 +60,6 @@ in
     google-chrome
     gpick
     gpu-screen-recorder
-    grpcurl
     gucharmap
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
@@ -71,8 +68,6 @@ in
     #jetbrains.idea-ultimate
     (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
     jetbrains.goland
-    kind
-    kubectl
     libreoffice
     losslesscut-bin
     minio-client
@@ -91,7 +86,6 @@ in
     unstable.pferd
     pmutils
     powertop
-    protobuf
     python3
     qbittorrent
     samba
