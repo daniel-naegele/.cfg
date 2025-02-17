@@ -106,6 +106,7 @@ in
     vlc
     wakatime-cli
     whatsapp-for-linux
+    weave-gitops
     wireshark
     w3m
     xorg.xprop
@@ -184,7 +185,7 @@ in
       ## everything inside of these brackets are Zed options.
       userSettings = {
           assistant = {
-              enabled = true;
+              enabled = false;
               version = "2";
               default_open_ai_model = null;
               ### PROVIDER OPTIONS
@@ -201,10 +202,6 @@ in
               #                        model = "gpt-3.5-turbo";
               #                    }
               #                ];
-          };
-         node = {
-              path = lib.getExe pkgs.nodejs;
-              npm_path = lib.getExe' pkgs.nodejs "npm";
           };
          hour_format = "hour24";
          auto_update = false;
