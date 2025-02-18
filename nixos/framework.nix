@@ -31,7 +31,13 @@
     # here, too, so that NetworkManager-wait-online succeeds. But seems broken again in 22.11
     enable = true;
     plugins = [ pkgs.networkmanager-openvpn ];
+    dns = "dnsmasq";
   };
+
+  environment.etc = {
+    "NetworkManager/dnsmasq.d/dnsmasq-staging.conf".text = "address=/*.staging/127.0.0.1";
+  };
+
   # systemd.network.wait-online.anyInterface = true; # https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1273814285
   systemd.services.NetworkManager-wait-online.enable = false; # https://github.com/NixOS/nixpkgs/issues/59603#issuecomment-1304869994
   systemd.services."getty@tty1".enable = false;
