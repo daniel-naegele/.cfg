@@ -95,6 +95,7 @@ in
     spotify
     teams-for-linux
     texlive.combined.scheme-full
+    tidal-dl
     tidal-hifi
     thunderbird
     tor-browser
@@ -165,6 +166,10 @@ in
       enable = true;
       defaultApplications = {
         "application/pdf" = [ "org.gnome.Evince.desktop" ];
+        "audio/flac" = [ "vlc.desktop" ]; 
+        "audio/mpeg" = [ "vlc.desktop" ];
+        "image/png" = [ "org.gnome.Loupe.desktop" ];
+        "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
       };
     };
   };

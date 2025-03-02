@@ -85,6 +85,12 @@ in
     })
     //
     ({
+      "org/gnome/desktop/sound" = {
+        event-sounds = false;
+      };
+    })
+    //
+    ({
       # pop-shell stuff
       #
       #"org/gnome/shell" = {
