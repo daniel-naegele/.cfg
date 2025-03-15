@@ -170,6 +170,7 @@ in
         "audio/mpeg" = [ "vlc.desktop" ];
         "image/png" = [ "org.gnome.Loupe.desktop" ];
         "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
+        "video/mp4" = [ "vlc.desktop" ];
       };
     };
   };
