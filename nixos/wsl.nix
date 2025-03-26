@@ -12,7 +12,6 @@
     enable = true;
     defaultUser = "nixos";
     startMenuLaunchers = true;
-    nativeSystemd = true;
     useWindowsDriver = true;
 
     interop.register = true;
