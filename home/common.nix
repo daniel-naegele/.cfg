@@ -207,7 +207,7 @@ in
       # hide user in shell prompt
       DEFAULT_USER = "daniel";
       # PAGER = "kak"; # doesn't understand color codes
-      EDITOR = "kak";
+      EDITOR = "vim";
       hardeningDisable = "fortify";
       CHROME_EXECUTABLE = "google-chrome-stable";
     };

@@ -71,6 +71,7 @@ in
     libreoffice
     losslesscut-bin
     minio-client
+    musescore
     nextcloud-client
     nil
     ninja
