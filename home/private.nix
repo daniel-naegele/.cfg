@@ -36,6 +36,7 @@ in
     bitwarden
     bitwarden-cli
     binutils # ar and stuff
+    borgbackup
     cifs-utils
     cmake
     dconf # some tools need this to preserve settings
@@ -66,7 +67,7 @@ in
     unstable.inkscape
     # jetbrains-toolbox
     #jetbrains.idea-ultimate
-    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
+    jetbrains.idea-ultimate
     jetbrains.goland
     libreoffice
     losslesscut-bin
@@ -106,6 +107,7 @@ in
     vesktop
     video-trimmer
     vlc
+    vorta
     wakatime-cli
     whatsapp-for-linux
     weave-gitops
