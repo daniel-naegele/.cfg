@@ -13,8 +13,7 @@
       "dart"
       "latex"
       "java"
-      "wakatime"
-      "latex"
+      #"wakatime"
       "ltex"
     ];
 
@@ -97,7 +96,6 @@
           };
         };
         texlab = {
-
           binary = {
             path_lookup = true;
           };
@@ -108,28 +106,26 @@
               };
               build = {
                 onSave = true;
-                executable = "tectonic";
+                forwardSearchAfter = true;
+                executable = "latexmk";
                 args = [
-                  "-X"
-                  "compile"
+                  "-pdf"
+                  "-bibtex"
+                  "-interaction=nonstopmode"
+                  "-synctex=1"
                   "%f"
-                  "--untrusted"
-                  "--synctex"
-                  "--keep-logs"
-                  "--keep-intermediates"
                 ];
               };
             };
           };
         };
         ltex = {
-
           binary = {
             path_lookup = true;
           };
           settings = {
             ltex = {
-              language = "en-EN";
+              language = "en-US";
             };
           };
         };
