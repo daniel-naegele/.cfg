@@ -20,16 +20,20 @@ self: super:
       cp lightson+cmd $out/bin/lightson+cmd
     '';
 
-    installPhase = let path = with self; [
-        coreutils
-        gawk
-        gnugrep
-        gnused
-        procps
-        xorg.xprop
-        xorg.xset
-        xorg.xvinfo
-      ]; in ''
+    installPhase =
+      let
+        path = with self; [
+          coreutils
+          gawk
+          gnugrep
+          gnused
+          procps
+          xorg.xprop
+          xorg.xset
+          xorg.xvinfo
+        ];
+      in
+      ''
         wrapProgram $out/bin/lightson+ \
           --prefix PATH : ${super.lib.makeBinPath path}
         wrapProgram $out/bin/lightson+cmd \

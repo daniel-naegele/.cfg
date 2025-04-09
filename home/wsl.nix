@@ -1,4 +1,10 @@
-{ config, pkgs, lib, unstable, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  unstable,
+  ...
+}:
 
 let
 
@@ -43,7 +49,7 @@ in
     hicolor-icon-theme
     # jetbrains-toolbox
     # jetbrains.idea-ultimate
-    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate ["nixidea"])
+    (jetbrains.plugins.addPlugins jetbrains.idea-ultimate [ "nixidea" ])
     losslesscut-bin
     minio-client
     ninja
@@ -108,7 +114,7 @@ in
     #  "icons/hicolor/128x128/apps/code.png".source = ./vscode/icon-128.png;
     #};
 
-#    configFile."mimeapps.list".force = true; # https://github.com/nix-community/home-manager/issues/1213
+    #    configFile."mimeapps.list".force = true; # https://github.com/nix-community/home-manager/issues/1213
     mimeApps = {
       enable = true;
       defaultApplications = {
@@ -128,6 +134,5 @@ in
     # dropbox only allows 3 devices in its free plan, so we are only installing it at home
   };
 
-
   services.gnome-keyring.enable = true;
-}  
+}

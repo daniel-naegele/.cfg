@@ -11,10 +11,10 @@ self: super:
         rev = "634d4624fca795e845324d238eb6df5b2374aa2c";
         sha256 = "03pzpax0ak267hrrgv50nm8r8z3m16s60xrjgc5gyhv7g4br1pms";
       };
-      phases = ["installPhase"];
+      phases = [ "installPhase" ];
       installPhase = ''
-	mkdir -p $out/share/kak/autoload/plugins
-	cp $src/rc/kit.kak $out/share/kak/autoload/plugins/kit.kak
+        	mkdir -p $out/share/kak/autoload/plugins
+        	cp $src/rc/kit.kak $out/share/kak/autoload/plugins/kit.kak
       '';
       meta = with super.lib; {
         description = "A Git porcelain inside Kakoune";

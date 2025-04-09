@@ -11,10 +11,10 @@ self: super:
         rev = "2775ab7a1fe3bb850c1de3bcc4111e3d4c24f5d4";
         sha256 = "1vyg1dgbrrsh4vj5lllp9lhslv6gip4v6vmym4lg5mnqmd82jji1";
       };
-      phases = ["installPhase"];
+      phases = [ "installPhase" ];
       installPhase = ''
-	mkdir -p $out/share/kak/autoload/plugins
-	cp $src/rc/tabs.kak $out/share/kak/autoload/plugins/tabs.kak
+        	mkdir -p $out/share/kak/autoload/plugins
+        	cp $src/rc/tabs.kak $out/share/kak/autoload/plugins/tabs.kak
       '';
       meta = with super.lib; {
         description = "Kakoune buffers as tabs in the status line";

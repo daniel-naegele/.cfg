@@ -2,7 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ name, config, pkgs, inputs, lib, ... }:
+{
+  name,
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -100,9 +107,20 @@
       enable = true;
       defaultFonts = {
         emoji = [ "Noto Color Emoji" ];
-        serif = [ "Ubuntu" "Roboto" ];
-        sansSerif = [ "Ubuntu" "Roboto" ];
-        monospace = [ "Iosevka" "Fira Code" "Cascadia Code" "Ubuntu" ];
+        serif = [
+          "Ubuntu"
+          "Roboto"
+        ];
+        sansSerif = [
+          "Ubuntu"
+          "Roboto"
+        ];
+        monospace = [
+          "Iosevka"
+          "Fira Code"
+          "Cascadia Code"
+          "Ubuntu"
+        ];
       };
     };
   };
@@ -200,7 +218,6 @@
     };
   };
 
-
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
@@ -262,7 +279,7 @@
       # We don't want natural scrolling on the track point or mouse
       additionalOptions = ''MatchIsTouchpad "on"'';
       # accelSpeed = "0.6";
-    
+
     };
   };
   services.gnome.core-utilities.enable = true;
@@ -308,12 +325,25 @@
     group = "users";
     description = "Daniel Nägele";
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "video" "input" "disk" "networkmanager" "libvirtd" "dialout" "tailscale"];
+    extraGroups = [
+      "wheel"
+      "audio"
+      "video"
+      "input"
+      "disk"
+      "networkmanager"
+      "libvirtd"
+      "dialout"
+      "tailscale"
+    ];
     uid = 1000;
     shell = pkgs.zsh;
     hashedPassword = "$6$PeNJjX6DQSKYld6x$XBooBII7i/vvyr72u6zvoa4yNN.S6dWgGh8TZcNIYS3mnVjkeGD.M0Dq30zkD8o4XP5Ual7b7P9AGa4WUb8mv1"; # mkpasswd -m sha-512
   };
-  nix.settings.trusted-users = [ "root" "@wheel" ]; # for user-mode cachix
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ]; # for user-mode cachix
 
   # libvirtd doesn't properly set up resolution and GPU acceleration
   #
@@ -341,7 +371,6 @@
     };
   };
   users.extraGroups.docker.members = [ "daniel" ];
-
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

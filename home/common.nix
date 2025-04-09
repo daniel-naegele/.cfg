@@ -1,4 +1,10 @@
-{ config, pkgs, lib, unstable, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  unstable,
+  ...
+}:
 
 # Worth considering:
 # - [starship](https://starship.rs): Cool cross-shell prompt
@@ -75,7 +81,7 @@ in
     neofetch
     # ncurses # the libtinfo uses a glibc that is often too new. That confuses GHC
     niv
-    nix#Flakes
+    nix # Flakes
     nix-diff
     nix-index
     nix-prefetch-scripts
@@ -171,19 +177,19 @@ in
       number = true;
     };
     plugins = with pkgs.vimPlugins; [
-      ctrlp                # Fuzzy file finder etc.
-      nerdcommenter        # Comment scripts
-      nerdtree             # File browser
-      fugitive             # Git commands
-      sensible             # Sensible defaults
-      sleuth               # Heuristically set buffer options
+      ctrlp # Fuzzy file finder etc.
+      nerdcommenter # Comment scripts
+      nerdtree # File browser
+      fugitive # Git commands
+      sensible # Sensible defaults
+      sleuth # Heuristically set buffer options
       # Solarized
-      airline              # Powerline in vimscript
-      vim-dispatch         # Asynchronous dispatcher
-      gitgutter            # Show git changes in gutter
+      airline # Powerline in vimscript
+      vim-dispatch # Asynchronous dispatcher
+      gitgutter # Show git changes in gutter
       # align              # Align stuff
-      tabular              # Also aligns stuff
-      tagbar               # ctags
+      tabular # Also aligns stuff
+      tagbar # ctags
     ];
   };
 
@@ -231,19 +237,21 @@ in
       ll = "ls -la";
       la = "ll -a";
       p = "(){ ${pkgs.python3}/bin/python -c \"from math import *; print($@);\" }"; # https://stackoverflow.com/questions/34340575/zsh-alias-with-parameter#comment108551041_39395740
-      rg-sed = ''() {
-        if [ $# -lt 3 ]; then
-          echo "USAGE: rg-sed regex replacement path" >&2
-          return 1
-        fi
+      rg-sed = ''
+        () {
+                if [ $# -lt 3 ]; then
+                  echo "USAGE: rg-sed regex replacement path" >&2
+                  return 1
+                fi
 
-        for f in $(${pkgs.ripgrep}/bin/rg --files-with-matches "$1" "$3"); do
-          rg --passthrough -N "$1" -r "$2" $f | ${pkgs.moreutils}/bin/sponge $f
-        done
-      }'';
+                for f in $(${pkgs.ripgrep}/bin/rg --files-with-matches "$1" "$3"); do
+                  rg --passthrough -N "$1" -r "$2" $f | ${pkgs.moreutils}/bin/sponge $f
+                done
+              }'';
       sshpp = ''ssh -t -Y sgraf-local@i44pc6.ppd.ipd.kit.edu "zsh -l"'';
       sshfspp = "${pkgs.sshfs}/bin/sshfs sgraf-local@i44pc6:/home/sgraf-local ~/mnt/work";
-      "nix-ghc-with" = ''(){ VER="$1"; shift; nix shell "$(nix eval --raw --apply "ghc: (ghc.ghcWithPackages (p: with p; [ $* ])).drvPath" nixpkgs#haskell.packages.ghc$VER)" }''; # https://github.com/NixOS/nix/issues/5567#issuecomment-1662884203
+      "nix-ghc-with" =
+        ''(){ VER="$1"; shift; nix shell "$(nix eval --raw --apply "ghc: (ghc.ghcWithPackages (p: with p; [ $* ])).drvPath" nixpkgs#haskell.packages.ghc$VER)" }''; # https://github.com/NixOS/nix/issues/5567#issuecomment-1662884203
     };
     shellGlobalAliases = {
       # An alias for quietly forking to background:
@@ -276,7 +284,10 @@ in
     fileWidgetOptions = [ "--preview '${pkgs.bat}/bin/bat {}'" ];
     changeDirWidgetCommand = "fd --type d";
     changeDirWidgetOptions = [ "--preview '${pkgs.tree}/bin/tree -C {} | head -200'" ];
-    historyWidgetOptions = [ "--sort" "--exact" ];
+    historyWidgetOptions = [
+      "--sort"
+      "--exact"
+    ];
     tmux.enableShellIntegration = true;
   };
 
@@ -285,27 +296,33 @@ in
     enable = lib.mkDefault false; # Too much churn for how often I use it
     doomPrivateDir = ./doom.d;
     # Only init/packages so we only rebuild when those change.
-    doomPackageDir = let
-      filteredPath = builtins.path {
-        path = doomPrivateDir;
-        name = "doom-private-dir-filtered";
-        filter = path: type:
-          builtins.elem (baseNameOf path) [ "init.el" "packages.el" ];
-      };
-    in pkgs.linkFarm "doom-packages-dir" [
-      {
-        name = "init.el";
-        path = "${filteredPath}/init.el";
-      }
-      {
-        name = "packages.el";
-        path = "${filteredPath}/packages.el";
-      }
-      {
-        name = "config.el";
-        path = pkgs.emptyFile;
-      }
-    ];
+    doomPackageDir =
+      let
+        filteredPath = builtins.path {
+          path = doomPrivateDir;
+          name = "doom-private-dir-filtered";
+          filter =
+            path: type:
+            builtins.elem (baseNameOf path) [
+              "init.el"
+              "packages.el"
+            ];
+        };
+      in
+      pkgs.linkFarm "doom-packages-dir" [
+        {
+          name = "init.el";
+          path = "${filteredPath}/init.el";
+        }
+        {
+          name = "packages.el";
+          path = "${filteredPath}/packages.el";
+        }
+        {
+          name = "config.el";
+          path = pkgs.emptyFile;
+        }
+      ];
   };
 
   fonts.fontconfig.enable = true;
@@ -327,6 +344,5 @@ in
     mounts = {
     };
   };
-
 
 }

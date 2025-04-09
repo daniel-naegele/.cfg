@@ -1,4 +1,10 @@
-{ config, pkgs, lib, unstable, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  unstable,
+  ...
+}:
 
 let
 
@@ -71,6 +77,7 @@ in
     jetbrains.idea-ultimate
     jetbrains.goland
     libreoffice
+    ltex-ls
     losslesscut-bin
     minio-client
     musescore
@@ -103,6 +110,7 @@ in
     tidal-hifi
     thunderbird
     tor-browser
+    treefmt
     # virtmanager # Needs virtualisation.libvirtd.enable = true; in configuration.nix and is currently deactivated
     umlet
     unityhub
@@ -166,7 +174,7 @@ in
     #  "icons/hicolor/128x128/apps/code.png".source = ./vscode/icon-128.png;
     #};
 
-#    configFile."mimeapps.list".force = true; # https://github.com/nix-community/home-manager/issues/1213
+    #    configFile."mimeapps.list".force = true; # https://github.com/nix-community/home-manager/issues/1213
     mimeApps = {
       enable = true;
       defaultApplications = {
@@ -193,7 +201,8 @@ in
 
   systemd.user.services = {
     # Touchpad gestures, accessed by the smooth gestures gnome extension
-    libinput-gestures = graphicalService "libinput gestures" "${pkgs.libinput-gestures}" "libinput-gestures";
+    libinput-gestures = graphicalService "libinput gestures" "${pkgs.libinput-gestures
+    }" "libinput-gestures";
   };
 
   services.gnome-keyring.enable = true;

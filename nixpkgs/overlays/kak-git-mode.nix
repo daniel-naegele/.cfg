@@ -11,10 +11,10 @@ self: super:
         rev = "900733432370fe0e383ef99b0ecc83a82c9e67cd";
         sha256 = "117lqv64jcbkwjyhssxlrqn3hsm4qxbi5n1rlarx94lz9wnix3ik";
       };
-      phases = ["installPhase"];
+      phases = [ "installPhase" ];
       installPhase = ''
-	mkdir -p $out/share/kak/autoload/plugins
-	cp $src/git-mode.kak $out/share/kak/autoload/plugins/git-mode.kak
+        	mkdir -p $out/share/kak/autoload/plugins
+        	cp $src/git-mode.kak $out/share/kak/autoload/plugins/git-mode.kak
       '';
       meta = with super.lib; {
         description = "Kakoune plugin providing improved git interaction";

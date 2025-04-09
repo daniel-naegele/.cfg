@@ -32,7 +32,7 @@
     shellAliases = {
       afs-lease = "kinit -l 7d sgraf; aklog";
       upd = "sudo apt update && sudo apt upgrade --yes && nix flake update /home/sgraf-local/code/nix/config/ && home-manager switch -b bak --flake /home/sgraf-local/code/nix/config/ && . ~/.zshrc";
-      afs-serve  = ''() { trap "pushd ~sgraf/public_html/   > /dev/null  && rm -rf $(echo "$@" | xargs -n1 basename); popd > /dev/null; return" EXIT INT; cp "$@" ~sgraf/public_html/   && read; }'';
+      afs-serve = ''() { trap "pushd ~sgraf/public_html/   > /dev/null  && rm -rf $(echo "$@" | xargs -n1 basename); popd > /dev/null; return" EXIT INT; cp "$@" ~sgraf/public_html/   && read; }'';
       afs-iserve = ''() { trap "pushd ~sgraf/public_html/i/ > /dev/null  && rm -rf $(echo "$@" | xargs -n1 basename); popd > /dev/null; return" EXIT INT; cp "$@" ~sgraf/public_html/i/ && read; }'';
     };
   };

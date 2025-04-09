@@ -1,34 +1,61 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
-  mkShortcuts = settings:
+  mkShortcuts =
+    settings:
     let
-      inherit (builtins) length head tail listToAttrs genList;
-      range = a: b: if a < b then [a] ++ range (a+1) b else [];
+      inherit (builtins)
+        length
+        head
+        tail
+        listToAttrs
+        genList
+        ;
+      range = a: b: if a < b then [ a ] ++ range (a + 1) b else [ ];
       globalPath = "org/gnome/settings-daemon/plugins/media-keys";
       path = "${globalPath}/custom-keybindings";
       mkPath = id: "${path}/custom${toString id}";
       isEmpty = list: length list == 0;
-      checkSettings = { name, command, binding }@this: this;
-      aux = i: list:
-        if isEmpty list then [] else
+      checkSettings =
+        {
+          name,
+          command,
+          binding,
+        }@this:
+        this;
+      aux =
+        i: list:
+        if isEmpty list then
+          [ ]
+        else
           let
             hd = head list;
             tl = tail list;
             name = mkPath i;
           in
-            aux (i+1) tl ++ [ {
+          aux (i + 1) tl
+          ++ [
+            {
               name = mkPath i;
               value = checkSettings hd;
-            } ];
+            }
+          ];
       settingsList = (aux 0 settings);
     in
-      listToAttrs (settingsList ++ [
+    listToAttrs (
+      settingsList
+      ++ [
         {
           name = globalPath;
           value = genList (i: "/${mkPath i}/") (length settingsList);
         }
-      ]);
+      ]
+    );
 
   gnomeCwd = pkgs.writeShellScriptBin "gnome-cwd" ''
     # Install and activate https://extensions.gnome.org/extension/4974/window-calls-extended/
@@ -54,9 +81,10 @@ in
   ];
 
   dconf.settings =
-    (let
-      nmcli = "${pkgs.networkmanager}/bin/nmcli";
-    in
+    (
+      let
+        nmcli = "${pkgs.networkmanager}/bin/nmcli";
+      in
       mkShortcuts [
         {
           name = "Toggle VPN";
@@ -70,27 +98,24 @@ in
           binding = "<super>t";
           command = "${config.programs.kitty.package}/bin/kitty --working-directory $(${gnomeCwd}/bin/gnome-cwd)";
         }
-      ])
-    //
-    ({
+      ]
+    )
+    // ({
       "org/gnome/mutter" = {
         experimental-features = [ "scale-monitor-framebuffer" ];
       };
     })
-    //
-    ({
+    // ({
       "org/gnome/desktop/input-sources" = {
         show-all-sources = true;
       };
     })
-    //
-    ({
+    // ({
       "org/gnome/desktop/sound" = {
         event-sounds = false;
       };
     })
-    //
-    ({
+    // ({
       # pop-shell stuff
       #
       #"org/gnome/shell" = {
@@ -102,7 +127,7 @@ in
       # disable incompatible shortcuts
       "org/gnome/mutter/wayland/keybindings" = {
         # restore the keyboard shortcuts: disable <super>escape
-        restore-shortcuts = [];
+        restore-shortcuts = [ ];
       };
       "org/gnome/desktop/wm/keybindings" = {
         # hide window: disable <super>h
@@ -116,37 +141,46 @@ in
         # restore window: disable <super>down
         unmaximize = [ "<super>down" ];
         # move to monitor up: disable <super><shift>up
-        move-to-monitor-up = [];
+        move-to-monitor-up = [ ];
         # move to monitor down: disable <super><shift>down
-        move-to-monitor-down = [];
+        move-to-monitor-down = [ ];
         # super + direction keys, move window left and right monitors, or up and down workspaces
         # move window one monitor to the left
-        move-to-monitor-left = [];
+        move-to-monitor-left = [ ];
         # move window one workspace down
-        move-to-workspace-down = [];
+        move-to-workspace-down = [ ];
         # move window one workspace up
-        move-to-workspace-up = [];
+        move-to-workspace-up = [ ];
         # move window one monitor to the right
-        move-to-monitor-right = [];
+        move-to-monitor-right = [ ];
         # super + ctrl + direction keys, change workspaces, move focus between monitors
         # move to workspace below
-        switch-to-workspace-down = [ "<primary><super>down" "<primary><super>j" ];
+        switch-to-workspace-down = [
+          "<primary><super>down"
+          "<primary><super>j"
+        ];
         # move to workspace above
-        switch-to-workspace-up = [ "<primary><super>up" "<primary><super>k" ];
+        switch-to-workspace-up = [
+          "<primary><super>up"
+          "<primary><super>k"
+        ];
         # toggle maximization state
         toggle-maximized = [ "<super>m" ];
         # close window
-        close = [ "<super>q" "<alt>f4" ];
+        close = [
+          "<super>q"
+          "<alt>f4"
+        ];
         # Instead of switch-applications
         switch-windows = [ "<alt>Tab" ];
         switch-windows-backwards = [ "<alt><shift>Tab" ];
       };
       "org/gnome/shell/keybindings" = {
-        open-application-menu = [];
+        open-application-menu = [ ];
         # toggle message tray: disable <super>m
         toggle-message-tray = [ "<super>v" ];
         # show the activities overview: disable <super>s
-        toggle-overview = [];
+        toggle-overview = [ ];
       };
       "org/gnome/mutter/keybindings" = {
         # do not disable tiling to left / right of screen
@@ -166,7 +200,7 @@ in
         # Doesn't work
         #terminal = [ "<super>t" ];
         # rotate video lock
-        rotate-video-lock-static = [];
+        rotate-video-lock-static = [ ];
       };
       "org/gnome/mutter" = {
         workspaces-only-on-primary = false;

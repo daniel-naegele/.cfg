@@ -5,7 +5,12 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   wsl = {
@@ -35,7 +40,7 @@
     shell = pkgs.zsh;
   };
 
-    # Set your time zone.
+  # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
   # Select internationalisation properties.
@@ -92,9 +97,20 @@
       enable = true;
       defaultFonts = {
         emoji = [ "Noto Color Emoji" ];
-        serif = [ "Ubuntu" "Roboto" ];
-        sansSerif = [ "Ubuntu" "Roboto" ];
-        monospace = [ "Iosevka" "Fira Code" "Cascadia Code" "Ubuntu" ];
+        serif = [
+          "Ubuntu"
+          "Roboto"
+        ];
+        sansSerif = [
+          "Ubuntu"
+          "Roboto"
+        ];
+        monospace = [
+          "Iosevka"
+          "Fira Code"
+          "Cascadia Code"
+          "Ubuntu"
+        ];
       };
     };
   };
@@ -179,7 +195,6 @@
       };
     };
   };
-
 
   services.tailscale = {
     enable = true;

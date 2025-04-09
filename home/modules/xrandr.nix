@@ -1,11 +1,17 @@
 { pkgs, lib, ... }:
 
 let
-  addMirrorAboveOff = baseAliases: lib.fold (alias: a: a // {
-    "${alias}-mirror" = "${alias} --same-as eDP-1";
-    "${alias}-above" = "${alias} --above eDP-1";
-    "${alias}-off" = "${alias} --off";
-  }) baseAliases (builtins.attrNames baseAliases);
+  addMirrorAboveOff =
+    baseAliases:
+    lib.fold (
+      alias: a:
+      a
+      // {
+        "${alias}-mirror" = "${alias} --same-as eDP-1";
+        "${alias}-above" = "${alias} --above eDP-1";
+        "${alias}-off" = "${alias} --off";
+      }
+    ) baseAliases (builtins.attrNames baseAliases);
 
 in
 
