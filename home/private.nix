@@ -96,7 +96,11 @@ in
     unstable.pferd
     pmutils
     powertop
-    python3
+
+        (python3.withPackages (python-pkgs: [
+                  python-pkgs.dbus-python
+                          python-pkgs.pygobject3
+                              ]))
     qbittorrent
     samba
     screen
