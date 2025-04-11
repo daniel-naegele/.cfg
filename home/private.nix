@@ -75,7 +75,6 @@ in
     # jetbrains-toolbox
     #jetbrains.idea-ultimate
     jetbrains.idea-ultimate
-    jetbrains.goland
     libreoffice
     ltex-ls
     losslesscut-bin
@@ -117,14 +116,12 @@ in
     treefmt
     # virtmanager # Needs virtualisation.libvirtd.enable = true; in configuration.nix and is currently deactivated
     umlet
-    unityhub
     vesktop
     video-trimmer
     vlc
     vorta
     wakatime-cli
     whatsapp-for-linux
-    weave-gitops
     wireshark
     w3m
     xorg.xprop
