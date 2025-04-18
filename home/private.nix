@@ -66,6 +66,7 @@ in
     gnomeExtensions.window-calls-extended
     go
     google-chrome
+    gopls
     gpick
     gpu-screen-recorder
     gucharmap
@@ -96,10 +97,10 @@ in
     pmutils
     powertop
 
-        (python3.withPackages (python-pkgs: [
-                  python-pkgs.dbus-python
-                          python-pkgs.pygobject3
-                              ]))
+    (python3.withPackages (python-pkgs: [
+      python-pkgs.dbus-python
+      python-pkgs.pygobject3
+    ]))
     qbittorrent
     samba
     screen
@@ -185,6 +186,7 @@ in
         "image/png" = [ "org.gnome.Loupe.desktop" ];
         "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
         "video/mp4" = [ "vlc.desktop" ];
+        "video/quicktime" = [ "vlc.desktop" ];
       };
     };
   };
