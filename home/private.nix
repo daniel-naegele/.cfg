@@ -54,6 +54,7 @@ in
     ethtool
     ffmpeg
     file
+    fluffychat
     fontforge-gtk
     gimp
     gnome-tweaks
@@ -77,6 +78,7 @@ in
     #jetbrains.idea-ultimate
     jetbrains.idea-ultimate
     libreoffice
+    libtiff
     ltex-ls
     losslesscut-bin
     minio-client
@@ -124,6 +126,7 @@ in
     wakatime-cli
     whatsapp-for-linux
     wireshark
+    wpsoffice
     w3m
     xorg.xprop
     zip
