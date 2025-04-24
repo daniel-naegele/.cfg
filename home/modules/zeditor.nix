@@ -13,7 +13,7 @@
       "dart"
       "latex"
       "java"
-      #"wakatime"
+      "log"
       "ltex"
       "git-firefly"
     ];
@@ -135,7 +135,7 @@
       soft_wrap = "editor_width";
       vim_mode = false;
       tab_size = 2;
-      ## tell zed to use direnv and direnv can use a flake.nix enviroment.
+      # tell zed to use direnv and direnv can use a flake.nix enviroment.
       load_direnv = "shell_hook";
       base_keymap = "JetBrains";
       theme = {
