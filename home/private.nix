@@ -77,6 +77,7 @@ in
     # jetbrains-toolbox
     #jetbrains.idea-ultimate
     jetbrains.idea-ultimate
+    jetbrains.clion
     libreoffice
     libtiff
     ltex-ls
@@ -190,6 +191,7 @@ in
         "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
         "video/mp4" = [ "vlc.desktop" ];
         "video/quicktime" = [ "vlc.desktop" ];
+        "application/wps-office.pptx" = [ "impress.desktop" ];
       };
     };
   };

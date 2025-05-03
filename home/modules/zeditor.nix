@@ -16,6 +16,7 @@
       "log"
       "ltex"
       "git-firefly"
+      "dockerfile"
     ];
 
     ## everything inside of these brackets are Zed options.
