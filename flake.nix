@@ -12,6 +12,8 @@
     nofib.flake = false;
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     nixos-wsl.url = "github:nix-community/nixos-wsl";
+    envfs.url = "github:Mic92/envfs";
+    envfs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # Taken from https://github.com/davidtwco/veritas/blob/master/flake.nix
@@ -20,6 +22,7 @@
       self,
       nixpkgs,
       nixos-wsl,
+      envfs,
       ...
     }@inputs:
     with inputs.nixpkgs.lib;
@@ -109,6 +112,7 @@
           inherit system;
           modules = [
             nixos-wsl.nixosModules.wsl
+            envfs.nixosModules.envfs
             (
               {
                 inputs,
