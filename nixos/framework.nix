@@ -31,15 +31,17 @@
   # Splash screen
   boot.plymouth.enable = true;
 
-  networking.hostName = "DN-Laptop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant. Not needed when we have networkmanager.
-  networking.networkmanager = {
-    # although Gnome activates nm by default, it's important we activate it
-    # here, too, so that NetworkManager-wait-online succeeds. But seems broken again in 22.11
-    enable = true;
-    plugins = [ pkgs.networkmanager-openvpn ];
-    dns = "dnsmasq";
+  networking = {
+    hostName = "DN-Laptop";
+    networkmanager = {
+      # although Gnome activates nm by default, it's important we activate it
+      # here, too, so that NetworkManager-wait-online succeeds. But seems broken again in 22.11
+      enable = true;
+      plugins = [ pkgs.networkmanager-openvpn ];
+      dns = "dnsmasq";
+    };
   };
+
 
   environment.etc = {
     "NetworkManager/dnsmasq.d/dnsmasq-staging.conf".text = "address=/*.staging/127.0.0.1";

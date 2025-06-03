@@ -47,6 +47,7 @@ in
     cifs-utils
     cmake
     dconf # some tools need this to preserve settings
+    dig
     discord
     element-desktop
     envoy
@@ -73,6 +74,7 @@ in
     gucharmap
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
+    img2pdf
     unstable.inkscape
     # jetbrains-toolbox
     #jetbrains.idea-ultimate
@@ -127,7 +129,6 @@ in
     wakatime-cli
     whatsapp-for-linux
     wireshark
-    wpsoffice
     w3m
     xorg.xprop
     zip
