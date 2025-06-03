@@ -78,6 +78,11 @@
       };
 
       lsp = {
+        gopls = {
+          binary = { 
+            path_lookup = true; 
+          }; 
+        };
         rust-analyzer = {
           binary = {
             # path = lib.getExe pkgs.rust-analyzer;
