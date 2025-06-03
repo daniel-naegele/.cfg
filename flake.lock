@@ -324,6 +324,27 @@
         "type": "github"
       }
     },
+    "gitignore": {
+      "inputs": {
+        "nixpkgs": [
+          "wakatime-ls",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709087332,
+        "narHash": "sha256-HG2cCnktfHsKV0s4XW83gU3F57gaTljL9KNSuG6bnQs=",
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "rev": "637db329424fd7e46cf4185293b9cc8c88c95394",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -694,7 +715,8 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_4",
         "nofib": "nofib",
-        "unstable": "unstable"
+        "unstable": "unstable",
+        "wakatime-ls": "wakatime-ls"
       }
     },
     "rotate-text": {
@@ -710,6 +732,27 @@
       "original": {
         "owner": "debug-ito",
         "repo": "rotate-text.el",
+        "type": "github"
+      }
+    },
+    "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "wakatime-ls",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1746153335,
+        "narHash": "sha256-vwKelhJJS8haCdH3t8uf96VFao7/YzJahPG5JLTO1PU=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "ebc7823c3ffde594c7733113042b72694d996de9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
         "type": "github"
       }
     },
@@ -794,6 +837,28 @@
         "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "wakatime-ls": {
+      "inputs": {
+        "gitignore": "gitignore",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1746970766,
+        "narHash": "sha256-C0D1xqUV4kwuzgRGKbzZ7RZLdgoYv/1TK0D09AsD/lE=",
+        "owner": "mrnossiom",
+        "repo": "wakatime-ls",
+        "rev": "bbcf77b2e9d1338780426097be573fb195ba20a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrnossiom",
+        "repo": "wakatime-ls",
         "type": "github"
       }
     },

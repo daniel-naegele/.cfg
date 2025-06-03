@@ -77,35 +77,47 @@
         working_directory = "current_project_directory";
       };
 
+      languages = {
+        YAML = {
+          formatter = "language_server";
+        };
+        Nix = {
+                  language_servers = [
+                    "nil"
+                    "!nixd"
+                  ];
+                  formatter = {
+                    external = {
+                      command = "nixfmt";
+                    };
+                  };
+                };
+      };
+
       lsp = {
+        yaml-language-server = {
+          binary.path_lookup = true;
+        };
+        json-language-server = {
+          binary.path_lookup = true;
+        };
         gopls = {
-          binary = { 
-            path_lookup = true; 
-          }; 
+          binary.path_lookup = true;
         };
         rust-analyzer = {
-          binary = {
-            # path = lib.getExe pkgs.rust-analyzer;
-            path_lookup = true;
-          };
+          binary.path_lookup = true;
         };
         nil = {
-          binary = {
-            path_lookup = true;
-          };
+          binary.path_lookup = true;
         };
         elixir-ls = {
-          binary = {
-            path_lookup = true;
-          };
+          binary.path_lookup = true;
           settings = {
             dialyzerEnabled = true;
           };
         };
         texlab = {
-          binary = {
-            path_lookup = true;
-          };
+          binary.path_lookup = true;
           settings = {
             texlab = {
               latexindent = {
@@ -127,9 +139,7 @@
           };
         };
         ltex = {
-          binary = {
-            path_lookup = true;
-          };
+          binary.path_lookup = true;
           settings = {
             ltex = {
               language = "en-US";

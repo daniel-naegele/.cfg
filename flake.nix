@@ -14,6 +14,8 @@
     nixos-wsl.url = "github:nix-community/nixos-wsl";
     envfs.url = "github:Mic92/envfs";
     envfs.inputs.nixpkgs.follows = "nixpkgs";
+    wakatime-ls.url = "github:mrnossiom/wakatime-ls";
+    wakatime-ls.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # Taken from https://github.com/davidtwco/veritas/blob/master/flake.nix
@@ -95,6 +97,13 @@
                     type = "indirect";
                   };
                   flake = inputs.unstable;
+                };
+                wakatime-ls = {
+                  from = {
+                    id = "wakatime-ls";
+                    type = "indirect";
+                  };
+                  flake = inputs.wakatime-ls;
                 };
               };
             };

@@ -90,6 +90,7 @@ in
     nil
     ninja
     nixd
+    nixfmt-rfc-style
     nmap
     unstable.obsidian
     obs-studio
@@ -126,11 +127,13 @@ in
     video-trimmer
     vlc
     vorta
+    vscode-langservers-extracted
     wakatime-cli
     whatsapp-for-linux
     wireshark
     w3m
     xorg.xprop
+    yaml-language-server
     zip
     zoom-us
 
@@ -167,7 +170,7 @@ in
   programs.zsh.shellAliases = {
     upd = "nix flake update --flake /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/ && . ~/.zshrc";
     switch = "sudo nixos-rebuild switch --flake /home/daniel/code/nix/config";
-    gc = "nix-collect-garbage --delete-older-than 14d";
+    gc = "sudo nix-collect-garbage --delete-older-than 14d";
   };
 
   programs.vscode = {
