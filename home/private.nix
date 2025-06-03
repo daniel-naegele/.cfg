@@ -93,7 +93,7 @@ in
     nmap
     unstable.obsidian
     obs-studio
-    okular
+    kdePackages.okular
     unstable.ollama
     pavucontrol
     pdfarranger

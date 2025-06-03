@@ -7,7 +7,7 @@
     };
   };
   permittedInsecurePackages = [
-    "fluffychat-linux-1.22.1"
+    "fluffychat-linux-1.26.1"
     "olm-3.2.16"
   ];
 }

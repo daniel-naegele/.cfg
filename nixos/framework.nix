@@ -242,7 +242,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -288,7 +288,7 @@
 
     };
   };
-  services.gnome.core-utilities.enable = true;
+  services.gnome.core-apps.enable = true;
   services.gnome.gnome-browser-connector.enable = true;
 
   ####################

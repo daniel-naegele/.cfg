@@ -206,7 +206,7 @@ in
       plugins = [ "git" ];
       theme = "agnoster";
     };
-    initExtra = builtins.readFile zsh/init.zsh;
+    initContent = builtins.readFile zsh/init.zsh;
     sessionVariables = {
       # disable default rprompt...?
       RPROMPT = "";
