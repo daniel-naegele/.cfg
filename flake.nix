@@ -38,9 +38,6 @@
           config = import ./nixpkgs/config.nix;
           # Overlays consumed by the home-manager/NixOS configuration.
           overlays = [
-            (import ./nixpkgs/overlays/kak-git-mode.nix)
-            (import ./nixpkgs/overlays/kak-lsp.nix)
-            (import ./nixpkgs/overlays/nofib-analyse.nix inputs.nofib)
             (import ./nixpkgs/overlays/evince.nix)
           ];
         }
@@ -179,7 +176,7 @@
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useUserPackages = true;
-              home-manager.useGlobalPkgs = true;
+              #home-manager.useGlobalPkgs = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = homeManagerConfigurations."${hostname}";
               home-manager.extraSpecialArgs = {

@@ -31,7 +31,6 @@ in
 {
   imports = [
     modules/ghc-dev.nix
-    modules/kakoune.nix
     modules/lazygit.nix
     modules/rclone.nix
   ];
@@ -154,7 +153,7 @@ in
     };
     extraConfig = {
       core = {
-        editor = "kak";
+        editor = "vim";
         pager = "less -x 4 -R -~"; # -F -c
         # excludesfile = "$HOME/.gitignore";
         whitespace = "trailing-space,space-before-tab";
