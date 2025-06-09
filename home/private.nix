@@ -129,6 +129,7 @@ in
     vorta
     vscode-langservers-extracted
     wakatime-cli
+    wakatime-ls
     whatsapp-for-linux
     wireshark
     w3m

@@ -39,6 +39,7 @@
           # Overlays consumed by the home-manager/NixOS configuration.
           overlays = [
             (import ./nixpkgs/overlays/evince.nix)
+            ((import ./nixpkgs/overlays/wakatime-ls.nix) system inputs.wakatime-ls)
           ];
         }
       );
@@ -176,7 +177,7 @@
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useUserPackages = true;
-              #home-manager.useGlobalPkgs = true;
+              home-manager.useGlobalPkgs = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = homeManagerConfigurations."${hostname}";
               home-manager.extraSpecialArgs = {

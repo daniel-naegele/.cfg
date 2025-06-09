@@ -82,19 +82,22 @@
           formatter = "language_server";
         };
         Nix = {
-                  language_servers = [
-                    "nil"
-                    "!nixd"
-                  ];
-                  formatter = {
-                    external = {
-                      command = "nixfmt";
-                    };
-                  };
-                };
+          language_servers = [
+            "nil"
+            "!nixd"
+          ];
+          formatter = {
+            external = {
+              command = "nixfmt";
+            };
+          };
+        };
       };
 
       lsp = {
+        wakatime-ls = {
+          binary.path_lookup = true;
+        };
         yaml-language-server = {
           binary.path_lookup = true;
         };
@@ -109,6 +112,9 @@
         };
         nil = {
           binary.path_lookup = true;
+          settings = {
+            nix.flake.autoArchive = true;
+          };
         };
         elixir-ls = {
           binary.path_lookup = true;
