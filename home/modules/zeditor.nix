@@ -95,6 +95,9 @@
       };
 
       lsp = {
+        package-version-server = {
+          binary.path_lookup = true;
+        };
         wakatime-ls = {
           binary.path_lookup = true;
         };

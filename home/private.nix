@@ -101,6 +101,7 @@ in
     postgresql_16
     unstable.pferd
     pmutils
+    package-version-server
     powertop
 
     (python3.withPackages (python-pkgs: [
