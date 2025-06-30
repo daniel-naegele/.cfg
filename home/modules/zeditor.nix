@@ -17,6 +17,8 @@
       "ltex"
       "git-firefly"
       "dockerfile"
+      "wakatime"
+      "proto"
     ];
 
     ## everything inside of these brackets are Zed options.
@@ -101,6 +103,9 @@
         wakatime-ls = {
           binary.path_lookup = true;
         };
+        wakatime = {
+          binary.path_lookup = true;
+        };
         yaml-language-server = {
           binary.path_lookup = true;
         };
@@ -169,8 +174,8 @@
         dark = "One Dark";
       };
       show_whitespaces = "all";
-      ui_font_size = 24;
-      buffer_font_size = 20;
+      ui_font_size = 20;
+      buffer_font_size = 16;
       buffer_line_height = "comfortable";
       autosave = "on_focus_change";
       restore_on_startup = "last_session";
