@@ -79,7 +79,7 @@ in
     # jetbrains-toolbox
     #jetbrains.idea-ultimate
     jetbrains.idea-ultimate
-    jetbrains.clion
+    jetbrains.goland
     libreoffice
     libtiff
     ltex-ls
