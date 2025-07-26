@@ -1,3 +1,3 @@
-system: wakatime: final: prev: {
+wakatime: system: final: prev: {
   wakatime-ls = wakatime.packages.${system}.wakatime-ls;
 }

@@ -16,6 +16,8 @@
     envfs.inputs.nixpkgs.follows = "nixpkgs";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls";
     wakatime-ls.inputs.nixpkgs.follows = "nixpkgs";
+    dagger.url = "github:dagger/nix";
+    dagger.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # Taken from https://github.com/davidtwco/veritas/blob/master/flake.nix
@@ -39,7 +41,8 @@
           # Overlays consumed by the home-manager/NixOS configuration.
           overlays = [
             (import ./nixpkgs/overlays/evince.nix)
-            ((import ./nixpkgs/overlays/wakatime-ls.nix) system inputs.wakatime-ls)
+            ((import ./nixpkgs/overlays/wakatime-ls.nix) inputs.wakatime-ls system)
+            ((import ./nixpkgs/overlays/dagger.nix) inputs.dagger system)
           ];
         }
       );

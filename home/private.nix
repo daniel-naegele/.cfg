@@ -46,6 +46,7 @@ in
     borgbackup
     cifs-utils
     cmake
+    dagger
     dconf # some tools need this to preserve settings
     dig
     discord
