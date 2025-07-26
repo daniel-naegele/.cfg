@@ -42,7 +42,6 @@
     };
   };
 
-
   environment.etc = {
     "NetworkManager/dnsmasq.d/dnsmasq-staging.conf".text = "address=/*.staging/127.0.0.1";
   };
@@ -301,6 +300,7 @@
     enable = true;
     settings = {
       USB_ALLOWLIST = "1-4 1-9"; # HDMI and USB A extension cards
+      USB_EXLUDE_PHONE = 1;
       # The following tweaks are from https://www.worldofbs.com/nixos-framework/
       CPU_BOOST_ON_BAT = 0;
       CPU_SCALING_GOVERNOR_ON_BATTERY = "powersave";

@@ -97,6 +97,7 @@ in
     ripgrep
     tealdeer
     tree
+    usbutils
     xclip # Maybe use clipit instead?
     xdg-utils
     vlc

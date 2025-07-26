@@ -97,6 +97,9 @@
       };
 
       lsp = {
+        dart = {
+          binary.path_lookup = true;
+        };
         package-version-server = {
           binary.path_lookup = true;
         };

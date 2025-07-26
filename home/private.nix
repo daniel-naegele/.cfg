@@ -92,6 +92,7 @@ in
     nixd
     nixfmt-rfc-style
     nmap
+    nodejs_22
     unstable.obsidian
     obs-studio
     kdePackages.okular
