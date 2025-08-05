@@ -206,6 +206,8 @@ in
         "x-scheme-handler/https" = [ "firefox.desktop" ];
         "x-scheme-handler/about" = [ "firefox.desktop" ];
         "x-scheme-handler/unknown" = [ "firefox.desktop" ];
+        "text/x-tex" = [ "dev.zed.Zed.desktop" ];
+        "text/x-log" = [ "org.gnome.TextEditor.desktop" ];
       };
     };
   };

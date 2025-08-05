@@ -43,6 +43,7 @@
             (import ./nixpkgs/overlays/evince.nix)
             ((import ./nixpkgs/overlays/wakatime-ls.nix) inputs.wakatime-ls system)
             ((import ./nixpkgs/overlays/dagger.nix) inputs.dagger system)
+            (import ./nixpkgs/overlays/texlive.nix)
           ];
         }
       );
