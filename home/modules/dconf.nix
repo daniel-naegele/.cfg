@@ -111,6 +111,11 @@ in
       };
     })
     // ({
+      "org/gnome/SessionManager" = {
+        auto-save-session = true;
+      };
+    })
+    // ({
       "org/gnome/desktop/sound" = {
         event-sounds = false;
       };

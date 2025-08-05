@@ -1,10 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, unstable, ... }:
 
 {
   imports = [ ];
 
   programs.zed-editor = {
     enable = true;
+    package = unstable.zed-editor;
     extensions = [
       "nix"
       "toml"

@@ -100,6 +100,7 @@ in
     unstable.ollama
     pavucontrol
     pdfarranger
+    podman
     postgresql_16
     unstable.pferd
     pmutils

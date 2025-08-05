@@ -341,6 +341,7 @@
       "libvirtd"
       "dialout"
       "tailscale"
+      "kvm"
     ];
     uid = 1000;
     shell = pkgs.zsh;
@@ -354,7 +355,13 @@
   # libvirtd doesn't properly set up resolution and GPU acceleration
   #
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
-  # boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" ];
+
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+    options kvm_intel emulate_invalid_guest_state=0
+    options kvm ignore_msrs=1
+  '';
   # virtualisation.kvmgt = {
   #   enable = true;
   #   vgpus = {
@@ -363,8 +370,25 @@
   #     };
   #   };
   # };
-  # virtualisation.libvirtd.enable = true;
-  #virtualisation.virtualbox.host.enable = true; # seems to be broken since Jun 23
+  #
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [
+          (pkgs.OVMFFull.override {
+            secureBoot = true;
+            tpmSupport = true;
+          }).fd
+        ];
+      };
+    };
+  }; # virtualisation.virtualbox.host.enable = true; # seems to be broken since Jun 23
+
   users.extraGroups.vboxusers.members = [ "daniel" ];
   # Unfortunately the extension pack isn't built by Hydra (unfree) and I really
   # don't want to rebuild this all the time
