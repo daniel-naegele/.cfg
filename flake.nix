@@ -33,6 +33,14 @@
     let
       #username = "daniel";
       forEachSystem = genAttrs [ "x86_64-linux" ];
+      unstableBySystem = forEachSystem (
+        system:
+        import inputs.unstable {
+          inherit system;
+          config = import ./nixpkgs/config.nix;
+        }
+      );
+
       pkgsBySystem = forEachSystem (
         system:
         import inputs.nixpkgs {
@@ -40,19 +48,11 @@
           config = import ./nixpkgs/config.nix;
           # Overlays consumed by the home-manager/NixOS configuration.
           overlays = [
-            (import ./nixpkgs/overlays/evince.nix)
+            ((import ./nixpkgs/overlays/evince.nix) unstableBySystem."${system}")
             ((import ./nixpkgs/overlays/wakatime-ls.nix) inputs.wakatime-ls system)
             ((import ./nixpkgs/overlays/dagger.nix) inputs.dagger system)
             (import ./nixpkgs/overlays/texlive.nix)
           ];
-        }
-      );
-
-      unstableBySystem = forEachSystem (
-        system:
-        import inputs.unstable {
-          inherit system;
-          config = import ./nixpkgs/config.nix;
         }
       );
 

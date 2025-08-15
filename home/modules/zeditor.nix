@@ -10,7 +10,7 @@
 
   programs.zed-editor = {
     enable = true;
-    package = unstable.zed-editor;
+    package = unstable.zed-editor-fhs;
     extensions = [
       "nix"
       "toml"
