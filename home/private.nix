@@ -117,6 +117,7 @@ in
     screen
     unstable.signal-desktop
     slack
+    sops
     spotify
     teams-for-linux
     texlab
@@ -140,6 +141,7 @@ in
     w3m
     xorg.xprop
     yaml-language-server
+    yq-go
     zip
     zoom-us
 
