@@ -12,6 +12,7 @@
     enable = true;
     package = unstable.zed-editor-fhs;
     extensions = [
+      "xml"
       "nix"
       "toml"
       "elixir"
@@ -23,7 +24,6 @@
       "ltex"
       "git-firefly"
       "dockerfile"
-      "wakatime"
       "proto"
     ];
 

@@ -39,6 +39,7 @@ in
   ];
 
   home.packages = with pkgs; [
+    anki
     baobab
     bitwarden
     bitwarden-cli
