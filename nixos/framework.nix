@@ -19,7 +19,11 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/var/lib/sbctl";
+  };
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.initrd.luks.devices = {
@@ -83,6 +87,7 @@
     openssh
     vim
     wget
+    inputs.unstable.legacyPackages.${pkgs.system}.sbctl
     tailscale
   ];
 

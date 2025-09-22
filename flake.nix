@@ -18,6 +18,10 @@
     wakatime-ls.inputs.nixpkgs.follows = "nixpkgs";
     dagger.url = "github:dagger/nix";
     dagger.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # Taken from https://github.com/davidtwco/veritas/blob/master/flake.nix
@@ -27,6 +31,8 @@
       nixpkgs,
       nixos-wsl,
       envfs,
+      sops-nix,
+      lanzaboote,
       ...
     }@inputs:
     with inputs.nixpkgs.lib;
@@ -123,8 +129,10 @@
         nameValuePair hostname (nixosSystem {
           inherit system;
           modules = [
+            sops-nix.nixosModules.sops
             nixos-wsl.nixosModules.wsl
             envfs.nixosModules.envfs
+            lanzaboote.nixosModules.lanzaboote
             (
               {
                 inputs,
@@ -148,6 +156,12 @@
                   "nixpkgs=/etc/nixpkgs"
                   "unstable=/etc/unstable"
                 ];
+
+                sops.secrets.github_token = {
+                  format = "yaml";
+                  # can be also set per secret
+                  sopsFile = secrets/github-pat.yaml;
+                };
 
                 nix = {
                   # Don't rely on the configuration to enable a flake-compatible version of Nix.
@@ -173,6 +187,9 @@
                   };
                   settings = {
                     auto-optimise-store = true;
+                    #access-tokens = [
+                    #  "github.com=${toString config.sops.secrets.github_token.path}"
+                    #];
                   };
                 };
               }
