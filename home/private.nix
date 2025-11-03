@@ -68,6 +68,7 @@ in
     gnomeExtensions.impatience
     gnomeExtensions.pop-shell
     gnomeExtensions.window-calls-extended
+    gnomeExtensions.gsconnect
     go
     google-chrome
     gopls
