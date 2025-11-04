@@ -198,20 +198,22 @@ in
       enable = true;
       defaultApplications = {
         "application/pdf" = [ "org.gnome.Evince.desktop" ];
+        "application/wps-office.pptx" = [ "impress.desktop" ];
         "audio/flac" = [ "vlc.desktop" ];
         "audio/mpeg" = [ "vlc.desktop" ];
         "image/png" = [ "org.gnome.Loupe.desktop" ];
         "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
+        "text/html" = [ "firefox.desktop" ];
+        "text/x-tex" = [ "dev.zed.Zed.desktop" ];
+        "text/x-log" = [ "org.gnome.TextEditor.desktop" ];
         "video/mp4" = [ "vlc.desktop" ];
         "video/quicktime" = [ "vlc.desktop" ];
-        "application/wps-office.pptx" = [ "impress.desktop" ];
-        "text/html" = [ "firefox.desktop" ];
         "x-scheme-handler/http" = [ "firefox.desktop" ];
         "x-scheme-handler/https" = [ "firefox.desktop" ];
         "x-scheme-handler/about" = [ "firefox.desktop" ];
         "x-scheme-handler/unknown" = [ "firefox.desktop" ];
-        "text/x-tex" = [ "dev.zed.Zed.desktop" ];
-        "text/x-log" = [ "org.gnome.TextEditor.desktop" ];
+        "x-scheme-handler/sgnl" = [ " signal.desktop " ];
+        "x-scheme-handler/signalcaptcha" = [ "signal.desktop" ];
       };
     };
   };
