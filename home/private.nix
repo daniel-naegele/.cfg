@@ -83,6 +83,7 @@ in
     #jetbrains.idea-ultimate
     jetbrains.idea-ultimate
     jetbrains.goland
+    kubernetes-helm
     libreoffice
     libtiff
     ltex-ls

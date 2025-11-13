@@ -149,6 +149,8 @@
   # Install firmware updates
   services.fwupd.enable = true;
 
+  programs.nix-ld.enable = true;
+
   programs.zsh.enable = true;
   programs.thefuck.enable = true;
 
