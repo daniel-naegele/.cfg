@@ -103,6 +103,7 @@ in
     // ({
       "org/gnome/mutter" = {
         experimental-features = [ "scale-monitor-framebuffer" ];
+        touchpad-gestures = false;
       };
     })
     // ({
@@ -121,14 +122,6 @@ in
       };
     })
     // ({
-      # pop-shell stuff
-      #
-      #"org/gnome/shell" = {
-      #  disable-user-extensions = false;
-      #  enabled-extensions = [
-      #    "pop-shell@system76.com"
-      #  ];
-      #};
       # disable incompatible shortcuts
       "org/gnome/mutter/wayland/keybindings" = {
         # restore the keyboard shortcuts: disable <super>escape

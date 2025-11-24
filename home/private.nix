@@ -47,6 +47,7 @@ in
     borgbackup
     cifs-utils
     cmake
+    cmctl
     dagger
     dconf # some tools need this to preserve settings
     dig
