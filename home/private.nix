@@ -85,6 +85,7 @@ in
     jetbrains.idea-ultimate
     jetbrains.goland
     kubernetes-helm
+    kube-capacity
     libreoffice
     libtiff
     ltex-ls
