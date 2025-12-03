@@ -2,10 +2,10 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix.url = "github:NixOS/nix";
-    home-manager.url = "github:rycee/home-manager/release-25.05";
+    home-manager.url = "github:rycee/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nofib.url = "git+https://gitlab.haskell.org/ghc/nofib?ref=wip/input-utf8";
@@ -20,7 +20,7 @@
     dagger.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.3";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -54,7 +54,7 @@
           config = import ./nixpkgs/config.nix;
           # Overlays consumed by the home-manager/NixOS configuration.
           overlays = [
-            ((import ./nixpkgs/overlays/evince.nix) unstableBySystem."${system}")
+            #((import ./nixpkgs/overlays/evince.nix) unstableBySystem."${system}")
             ((import ./nixpkgs/overlays/wakatime-ls.nix) inputs.wakatime-ls system)
             ((import ./nixpkgs/overlays/dagger.nix) inputs.dagger system)
             (import ./nixpkgs/overlays/texlive.nix)

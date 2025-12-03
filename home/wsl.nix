@@ -40,7 +40,6 @@ in
     binutils # ar and stuff
     cifs-utils
     cmake
-    envoy
     ffmpeg
     file
     go

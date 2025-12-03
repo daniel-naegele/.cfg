@@ -41,7 +41,7 @@ in
   home.packages = with pkgs; [
     anki
     baobab
-    bitwarden
+    bitwarden-desktop
     bitwarden-cli
     binutils # ar and stuff
     borgbackup
@@ -53,7 +53,6 @@ in
     dig
     discord
     element-desktop
-    envoy
     esptool
     ethtool
     ffmpeg
@@ -140,7 +139,7 @@ in
     vscode-langservers-extracted
     wakatime-cli
     wakatime-ls
-    whatsapp-for-linux
+    wasistlos
     wireshark
     w3m
     xorg.xprop
@@ -177,12 +176,12 @@ in
     # enable = true;
   };
 
-  programs.git.userEmail = "daniel@naegele.dev";
+  programs.git.settings.user.email = "daniel@naegele.dev";
 
   programs.zsh.shellAliases = {
-    upd = "nix flake update --flake /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/ && . ~/.zshrc";
+    upd = "sudo true && nix flake update --flake /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/ && . ~/.zshrc";
     switch = "sudo nixos-rebuild switch --flake /home/daniel/code/nix/config";
-    gc = "sudo nix-collect-garbage --delete-older-than 14d";
+    gc = "sudo nix-collect-garbage --delete-old #5";
   };
 
   programs.vscode = {

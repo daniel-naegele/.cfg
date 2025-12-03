@@ -18,20 +18,20 @@
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
   };
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.initrd.luks.devices = {
     crypted = {
       device = "/dev/disk/by-uuid/1c4c0c60-5849-4cd2-9c2a-22008be3b7ce";
     };
   };
-
+  boot.loader = {
+    systemd-boot.enable = lib.mkForce false;
+    efi.canTouchEfiVariables = true;
+    efi.efiSysMountPoint = "/boot/efi";
+  };
   # Splash screen
   boot.plymouth.enable = true;
 
@@ -103,10 +103,10 @@
       iosevka
       material-design-icons # community
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       roboto
       siji
-      ubuntu_font_family
+      ubuntu-classic
     ];
 
     fontconfig = {
@@ -137,7 +137,6 @@
   services.udev.packages = with pkgs; [
     gnome-settings-daemon
     yubikey-personalization
-    android-udev-rules
   ];
 
   # Shoot things when there's less than 2% RAM
@@ -152,7 +151,7 @@
   programs.nix-ld.enable = true;
 
   programs.zsh.enable = true;
-  programs.thefuck.enable = true;
+  programs.pay-respects.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -270,17 +269,17 @@
     xkb.layout = "eu,de";
     xkb.options = "eurosign:e, caps:swapescape";
     #dpi = 192;
+  };
 
-    displayManager.gdm.enable = true;
-    displayManager.gdm.wayland = true;
-    #displayManager.gdm.debug = true;
-    desktopManager.gnome.enable = true;
-    #desktopManager.gnome.debug = true;
+  services.desktopManager = {
+    gnome.enable = true;
   };
 
   services.displayManager = {
     autoLogin.enable = true;
     autoLogin.user = "daniel";
+    gdm.enable = true;
+    gdm.wayland = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManagers).
@@ -317,13 +316,11 @@
     };
   };
   # Suspend-then-hibernate everywhere
-  services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    extraConfig = ''
-      HandlePowerKey=suspend-then-hibernate
-      IdleAction=suspend-then-hibernate
-      IdleActionSec=2m
-    '';
+  services.logind.settings.Login = {
+    HandlePowerKey = "suspend-then-hibernate";
+    IdleAction = "suspend-then-hibernate";
+    IdleActionSec = "2m";
+    HandleLidSwitch = "suspend-then-hibernate";
   };
   systemd.sleep.extraConfig = "HibernateDelaySec=2h";
 
@@ -384,15 +381,7 @@
       package = pkgs.qemu_kvm;
       runAsRoot = true;
       swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [
-          (pkgs.OVMFFull.override {
-            secureBoot = true;
-            tpmSupport = true;
-          }).fd
-        ];
-      };
+
     };
   }; # virtualisation.virtualbox.host.enable = true; # seems to be broken since Jun 23
 

@@ -87,10 +87,10 @@
       iosevka
       material-design-icons # community
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       roboto
       siji
-      ubuntu_font_family
+      ubuntu-classic
     ];
 
     fontconfig = {
@@ -122,7 +122,7 @@
   };
 
   programs.zsh.enable = true;
-  programs.thefuck.enable = true;
+  programs.pay-respects.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
