@@ -25,6 +25,7 @@
       "git-firefly"
       "dockerfile"
       "proto"
+      "helm"
     ];
 
     ## everything inside of these brackets are Zed options.
@@ -103,6 +104,9 @@
       };
 
       lsp = {
+        helm = {
+          binary.path_lookup = true;
+        };
         dart = {
           binary.path_lookup = true;
         };

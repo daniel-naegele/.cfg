@@ -392,8 +392,8 @@
   virtualisation.docker = {
     enable = true;
     daemon.settings = {
-      bip = "192.168.2.0/17";
-      fixed-cidr = "192.168.2.1/17";
+      bip = "192.168.129.0/17";
+      fixed-cidr = "192.168.129.0/17";
     };
   };
   users.extraGroups.docker.members = [ "daniel" ];

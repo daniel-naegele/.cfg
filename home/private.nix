@@ -75,6 +75,7 @@ in
     gpick
     gpu-screen-recorder
     gucharmap
+    helm-ls
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
     img2pdf
@@ -138,7 +139,6 @@ in
     vorta
     vscode-langservers-extracted
     wakatime-cli
-    wakatime-ls
     wasistlos
     wireshark
     w3m
