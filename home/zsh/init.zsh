@@ -144,30 +144,6 @@ function lnfd() {
   ln -s $f $2
 }
 
-# Prepare a new testcase and open it in $EDITOR
-function ntc() {
-cat << EOF > $1
--- {-# OPTIONS_GHC -Wincomplete-patterns -fforce-recomp #-}
--- {-# OPTIONS_GHC -O2 -fforce-recomp #-}
--- {-# LANGUAGE PatternSynonyms #-}
--- {-# LANGUAGE BangPatterns #-}
--- {-# LANGUAGE MagicHash, UnboxedTuples #-}
-module Lib where
-
-EOF
-$EDITOR $1
-}
-
-# Prepare a new interestingness test and open it in $EDITOR
-function nint() {
-cat << EOF > $1
-#! /usr/bin/env bash
-$HOME/code/hs/ghc/pristine/_validate/stage1/bin/ghc -O repro.hs | grep panic
-EOF
-chmod +x $1
-$EDITOR $1
-}
-
 function ncpus() {
   grep -c ^processor /proc/cpuinfo
 }
@@ -191,25 +167,3 @@ function lsg() {
     fi
   done | column -t -s $'\t'
 }
-
-function lsghc() {
-  function modified_indicator() {
-    if git -C $1 diff --no-ext-diff --quiet --exit-code --ignore-submodules; then
-      echo "✓"
-    else
-      echo "✗"
-    fi
-  }
-  for d in $(\ls -d */); do
-    if is_git_dir $d && [ $(git -C $d remote get-url origin) = "https://gitlab.haskell.org/ghc/ghc.git" ]; then
-      printf "%s\t%s\t%s\n" $d $(modified_indicator $d) $(git -C $d branch --show-current)
-    fi
-  done | column -t -s $'\t'
-}
-
-# Completions
-source <(kubectl completion zsh)
-source <(flux completion zsh)
-source <(buf completion zsh)
-source <(dagger completion zsh)
-source <(cmctl completion zsh)

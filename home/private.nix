@@ -181,7 +181,7 @@ in
   programs.zsh.shellAliases = {
     upd = "sudo true && nix flake update --flake /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/ && . ~/.zshrc";
     switch = "sudo nixos-rebuild switch --flake /home/daniel/code/nix/config";
-    gc = "sudo nix-collect-garbage --delete-old #5";
+    ncg = "sudo nix-collect-garbage --delete-old #5";
   };
 
   programs.vscode = {
