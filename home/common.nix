@@ -95,10 +95,12 @@ in
     ripgrep
     tealdeer
     tree
+    unzip
     usbutils
     xclip # Maybe use clipit instead?
     xdg-utils
     vlc
+    wireguard-tools
     wl-color-picker
     wl-clipboard
     zoxide
