@@ -26,6 +26,7 @@
       "dockerfile"
       "proto"
       "helm"
+      "kotlin"
     ];
 
     ## everything inside of these brackets are Zed options.
@@ -43,10 +44,10 @@
         ];
       };
       agent = {
-        enabled = false;
+        enabled = true;
         default_model = {
-          provider = "zed.dev";
-          model = "claude-3-5-sonnet-latest";
+          provider = "anthropic";
+          model = "claude-4-5-sonnet";
         };
       };
       hour_format = "hour24";
@@ -101,9 +102,19 @@
             };
           };
         };
+
       };
 
       lsp = {
+        kotlin-language-server = {
+          settings = {
+            compiler = {
+              jvm = {
+                target = "17";
+              };
+            };
+          };
+        };
         helm = {
           binary.path_lookup = true;
         };

@@ -46,6 +46,8 @@ in
     binutils # ar and stuff
     borgbackup
     cifs-utils
+    claude-code
+    claude-code-acp
     cmake
     cmctl
     dagger
@@ -59,6 +61,7 @@ in
     file
     fluffychat
     fontforge-gtk
+    gcc
     gimp
     gnome-tweaks
     gnome-shell-extensions
@@ -70,6 +73,7 @@ in
     gnomeExtensions.window-calls-extended
     gnomeExtensions.gsconnect
     go
+    golangci-lint
     google-chrome
     gopls
     gpick
@@ -80,9 +84,7 @@ in
     hicolor-icon-theme
     img2pdf
     unstable.inkscape
-    # jetbrains-toolbox
-    #jetbrains.idea-ultimate
-    jetbrains.idea-ultimate
+    jetbrains.idea
     jetbrains.goland
     kubernetes-helm
     kube-capacity
@@ -117,6 +119,7 @@ in
       python-pkgs.pygobject3
     ]))
     qbittorrent
+    sabnzbd
     samba
     screen
     unstable.signal-desktop

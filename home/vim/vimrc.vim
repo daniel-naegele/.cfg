@@ -1,12 +1,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Maintainer:
 "       Amir Salihefendic
 "       http://amix.dk - amix@amix.dk
 "
-" Version: 
-"       6.0 - 01/04/17 14:24:34 
+" Version:
+"       6.0 - 01/04/17 14:24:34
 "
-" Blog_post: 
+" Blog_post:
 "       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
 "
 " Awesome_version:
@@ -19,7 +19,7 @@
 " Syntax_highlighted:
 "       http://amix.dk/vim/vimrc.html
 "
-" Raw_version: 
+" Raw_version:
 "       http://amix.dk/vim/vimrc.txt
 "
 " Sections:
@@ -57,7 +57,7 @@ nmap <leader>q :qa!<cr>
 " Fast saving and quitting
 nmap <leader>x :x<cr>
 
-" :W sudo saves the file 
+" :W sudo saves the file
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
@@ -69,7 +69,7 @@ command W w !sudo tee % > /dev/null
 set so=7
 
 " Avoid garbled characters in Chinese language windows OS
-let $LANG='en' 
+let $LANG='en'
 set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -93,20 +93,20 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
 set hlsearch
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw 
+set lazyredraw
 
 " For regular expressions turn magic on
 set magic
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -195,6 +195,9 @@ set wrap "Wrap lines
 
 set nojoinspaces "Don't add spaces after '.', '?' and '!' in gq
 
+" YAML files use 2 spaces for indentation
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -250,7 +253,7 @@ map <leader>Te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -422,7 +425,7 @@ function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
@@ -440,4 +443,3 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-
