@@ -113,7 +113,7 @@ in
     pmutils
     package-version-server
     powertop
-
+    platformio
     (python3.withPackages (python-pkgs: [
       python-pkgs.dbus-python
       python-pkgs.pygobject3
