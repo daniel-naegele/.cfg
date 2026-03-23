@@ -83,14 +83,14 @@ in
   dconf.settings =
     (
       let
-        nmcli = "${pkgs.networkmanager}/bin/nmcli";
+        tailscale = "${pkgs.tailscale}/bin/tailscale";
       in
       mkShortcuts [
         {
           name = "Toggle VPN";
           #binding = "XF86AudioMedia"; # can't catch this key for some reason
           binding = "F12";
-          command = "sh -c 'if [[ -n $(${nmcli} con show kit | grep \"VPN connected\") ]]; then ${nmcli} con down kit; else ${nmcli} con up kit; fi'";
+          command = "sh -c 'if [[ -n $(${tailscale} status | grep \"Tailscale is stopped\") ]]; then ${tailscale} down; else ${tailscale} up; fi'";
         }
         {
           name = "Launch terminal here";
@@ -102,8 +102,8 @@ in
     )
     // ({
       "org/gnome/mutter" = {
-        experimental-features = [ "scale-monitor-framebuffer" ];
         touchpad-gestures = false;
+        workspaces-only-on-primary = false;
       };
     })
     // ({
@@ -200,11 +200,6 @@ in
         # rotate video lock
         rotate-video-lock-static = [ ];
       };
-      "org/gnome/mutter" = {
-        workspaces-only-on-primary = false;
-        experimental-features = [ "scale-monitor-framebuffer" ];
-      };
-
       "org/gnome/shell/window-switcher".current-workspace-only = false;
     });
 }
