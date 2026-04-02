@@ -147,8 +147,30 @@
 
   # Install firmware updates
   services.fwupd.enable = true;
-
+  programs.adb.enable = true;
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    gtk3
+    glib
+    nss
+    nspr
+    at-spi2-atk
+    cups
+    dbus
+    libdrm
+    mesa
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXrandr
+    xorg.libxcb
+    pango
+    cairo
+    expat
+    harfbuzz
+  ];
 
   programs.zsh.enable = true;
   programs.pay-respects.enable = true;
@@ -346,6 +368,8 @@
       "dialout"
       "tailscale"
       "kvm"
+      "adbusers"
+      "plugdev"
     ];
     uid = 1000;
     shell = pkgs.zsh;

@@ -141,7 +141,7 @@ in
         dx = "diff --cached";
         fixup = "commit --amend --reuse-message=HEAD"; # reuses timestamp and authorship info
         # (f)etch (o)rigin and (s)witch to new branch from origin/master
-        fos = ''!bash -ec 'if (( $# != 1)); then echo >&2 git fos: 1 parameter expected; exit 2; fi; git fetch origin && git switch --create $1 --no-track origin/master' fos'';
+        fos = "!bash -ec 'if (( $# != 1)); then echo >&2 git fos: 1 parameter expected; exit 2; fi; git fetch origin && git switch --create $1 --no-track origin/master' fos";
         graph = "log --decorate --graph";
         less = "-p cat-file -p";
         l = "log --decorate --graph --oneline";

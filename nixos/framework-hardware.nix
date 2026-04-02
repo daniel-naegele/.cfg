@@ -25,6 +25,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernel.sysctl = {
     "vm.swappiness" = 1;
+    "vm.page-cluster" = 0;
   };
   boot.extraModulePackages = [ ];
 
@@ -64,7 +65,18 @@
     fsType = "vfat";
   };
 
-  swapDevices = [ { device = "/swap/swapfile"; } ];
+  swapDevices = [
+    {
+      device = "/swap/swapfile";
+      priority = -2;
+    }
+  ];
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+  };
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
