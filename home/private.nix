@@ -40,6 +40,8 @@ in
 
   home.packages = with pkgs; [
     anki
+    ausweisapp
+    ausweiskopie
     baobab
     bitwarden-desktop
     bitwarden-cli
@@ -127,6 +129,7 @@ in
     sops
     spotify
     teams-for-linux
+    termius
     texlab
     texlive.combined.scheme-full
     tidal-dl
@@ -212,6 +215,7 @@ in
         "text/html" = [ "firefox.desktop" ];
         "text/x-tex" = [ "dev.zed.Zed.desktop" ];
         "text/x-log" = [ "org.gnome.TextEditor.desktop" ];
+        "text/xml" = [ "org.gnome.TextEditor.desktop" ];
         "video/mp4" = [ "vlc.desktop" ];
         "video/quicktime" = [ "vlc.desktop" ];
         "x-scheme-handler/http" = [ "firefox.desktop" ];
