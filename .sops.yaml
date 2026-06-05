@@ -6,7 +6,7 @@ keys:
   - &admin_daniel age1yvcq2p43h023m8ds5qjyc96p48kd4p4f8f7hux8dsjcv7tfehvaqjut87h
   - &machine_framework age1df9dcsv6kayhd6ymzc2sxhnnncgayljesrwszrsj0w48nt8af5xqma94lp
 creation_rules:
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini|key)$
     key_groups:
       - age:
           - *machine_framework

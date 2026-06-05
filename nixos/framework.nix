@@ -18,6 +18,16 @@
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
   ];
 
+  sops = {
+    defaultSopsFile = ../secrets/framework.yaml;
+    secrets = {
+      ovpn_wg_zr = {
+        owner = "daniel";
+        mode = "0600";
+      };
+    };
+  };
+
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
@@ -244,6 +254,33 @@
           verb 3
         '';
       };
+    };
+  };
+
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [
+        "172.28.69.36/32"
+        "fd00:0000:1337:cafe:1111:1111:4156:8fd4/128"
+      ];
+      # use dnscrypt, or proxy dns as described above
+      dns = [
+        "46.227.67.134"
+        "192.165.9.158"
+        "2a07:a880:4601:10f0:cd45::"
+        "2001:67c:750:1:cafe:cd45::1"
+      ];
+      privateKeyFile = config.sops.secrets.ovpn_wg_zr.path;
+      peers = [
+        {
+          publicKey = "BH/TUFM8TPoYqpry4o2ZF+rgW3DPTZHsB886Wq6aaCc=";
+          allowedIPs = [
+            "0.0.0.0/0"
+            "::/0"
+          ];
+          endpoint = "vpn43.prd.zurich.ovpn.com:9929";
+        }
+      ];
     };
   };
 
