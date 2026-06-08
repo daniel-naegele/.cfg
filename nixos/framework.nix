@@ -259,6 +259,7 @@
 
   networking.wg-quick.interfaces = {
     wg0 = {
+      autostart = false;
       address = [
         "172.28.69.36/32"
         "fd00:0000:1337:cafe:1111:1111:4156:8fd4/128"
