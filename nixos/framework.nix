@@ -157,7 +157,6 @@
 
   # Install firmware updates
   services.fwupd.enable = true;
-  programs.adb.enable = true;
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     gtk3
@@ -339,7 +338,6 @@
     autoLogin.enable = true;
     autoLogin.user = "daniel";
     gdm.enable = true;
-    gdm.wayland = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManagers).
@@ -382,7 +380,9 @@
     IdleActionSec = "2m";
     HandleLidSwitch = "suspend-then-hibernate";
   };
-  systemd.sleep.extraConfig = "HibernateDelaySec=2h";
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "2h";
+  };
 
   ####################
   # USER MANAGEMENT #
@@ -428,36 +428,53 @@
     options kvm_intel emulate_invalid_guest_state=0
     options kvm ignore_msrs=1
   '';
-  # virtualisation.kvmgt = {
-  #   enable = true;
-  #   vgpus = {
-  #     "i915-GVTg_V5_8" = { # needs to be updated to this laptop
-  #       uuid = "78afde9e-24fe-11ea-89ab-c3e54fc4e17c";
-  #     };
-  #   };
-  # };
-  #
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-
-    };
-  }; # virtualisation.virtualbox.host.enable = true; # seems to be broken since Jun 23
 
   users.extraGroups.vboxusers.members = [ "daniel" ];
-  # Unfortunately the extension pack isn't built by Hydra (unfree) and I really
-  # don't want to rebuild this all the time
-  # virtualisation.virtualbox.host.enableExtensionPack = true;
-  virtualisation.docker = {
-    enable = true;
-    daemon.settings = {
-      bip = "192.168.129.0/17";
-      fixed-cidr = "192.168.129.0/17";
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+        swtpm.enable = true;
+
+      };
+    };
+    containers.enable = true;
+    podman = {
+      enable = true;
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings = {
+        dns_enabled = true;
+        default_subnet = "192.168.129.0/24";
+        default_subnet_pools = [
+          {
+            base = "192.168.130.0/24";
+            size = 24;
+          }
+          {
+            base = "192.168.131.0/24";
+            size = 24;
+          }
+          {
+            base = "192.168.132.0/24";
+            size = 24;
+          }
+          {
+            base = "192.168.133.0/24";
+            size = 24;
+          }
+          {
+            base = "192.168.134.0/24";
+            size = 24;
+          }
+        ];
+      };
     };
   };
+
   users.extraGroups.docker.members = [ "daniel" ];
 
   # This value determines the NixOS release from which the default

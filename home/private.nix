@@ -145,7 +145,6 @@ in
     vorta
     vscode-langservers-extracted
     wakatime-cli
-    wasistlos
     webex
     wireshark
     w3m

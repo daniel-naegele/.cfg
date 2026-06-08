@@ -48,11 +48,14 @@ in
     cabal-install
     cloc
     creduce
+    dive
+    docker-compose
     dtrx
     # dust # Needs pypy (WTF)
     entr
     evince
     eza
+    fastfetch
     fd
     fluxcd
     ghc
@@ -75,7 +78,6 @@ in
     man-pages
     moreutils
     ncdu
-    neofetch
     # ncurses # the libtinfo uses a glibc that is often too new. That confuses GHC
     niv
     nix # Flakes
@@ -83,6 +85,7 @@ in
     nix-index
     nix-prefetch-scripts
     nixpkgs-review
+    podman-tui
     protobuf
     p7zip
     # parallel # GNU parallel + env_parallel, clashes with moreutils

@@ -2,25 +2,23 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix.url = "github:NixOS/nix";
-    home-manager.url = "github:rycee/home-manager/release-25.11";
+    home-manager.url = "github:rycee/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nofib.url = "git+https://gitlab.haskell.org/ghc/nofib?ref=wip/input-utf8";
     nofib.flake = false;
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     nixos-wsl.url = "github:nix-community/nixos-wsl";
-    envfs.url = "github:Mic92/envfs";
-    envfs.inputs.nixpkgs.follows = "nixpkgs";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls";
     wakatime-ls.inputs.nixpkgs.follows = "nixpkgs";
     dagger.url = "github:dagger/nix";
     dagger.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.3";
+    lanzaboote.url = "github:nix-community/lanzaboote/v1.0.0";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -30,7 +28,6 @@
       self,
       nixpkgs,
       nixos-wsl,
-      envfs,
       sops-nix,
       lanzaboote,
       ...
@@ -131,7 +128,6 @@
           modules = [
             sops-nix.nixosModules.sops
             nixos-wsl.nixosModules.wsl
-            envfs.nixosModules.envfs
             lanzaboote.nixosModules.lanzaboote
             (
               {
