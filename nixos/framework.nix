@@ -46,7 +46,7 @@
   boot.plymouth.enable = true;
 
   networking = {
-    hostName = "DN-Laptop";
+    hostName = "neon";
     networkmanager = {
       # although Gnome activates nm by default, it's important we activate it
       # here, too, so that NetworkManager-wait-online succeeds. But seems broken again in 22.11
@@ -97,7 +97,7 @@
     openssh
     vim
     wget
-    inputs.unstable.legacyPackages.${pkgs.system}.sbctl
+    inputs.unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.sbctl
     tailscale
   ];
 
@@ -168,13 +168,13 @@
     dbus
     libdrm
     mesa
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXrandr
-    xorg.libxcb
+    libx11
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxrandr
+    libxcb
     pango
     cairo
     expat

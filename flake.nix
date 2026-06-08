@@ -246,7 +246,7 @@
       # that host - consumed by the home-manager NixOS module for that host (if it exists)
       # or by `mkHomeManagerHostConfiguration` for home-manager-only hosts.
       homeManagerConfigurations = mapAttrs' mkHomeManagerConfiguration {
-        DN-Laptop = {
+        neon = {
           system = "x86_64-linux";
           config = ./home/private.nix;
         };
@@ -291,7 +291,7 @@
       # Attribute set of hostnames to evaluated NixOS configurations. Consumed by `nixos-rebuild`
       # on those hosts.
       nixosHostConfigurations = mapAttrs' mkNixOsConfiguration {
-        DN-Laptop = {
+        neon = {
           system = "x86_64-linux";
           config = ./nixos/framework.nix;
           username = "daniel";
@@ -307,6 +307,6 @@
     {
       homeConfigurations = homeManagerHostConfigurations;
       nixosConfigurations = nixosHostConfigurations;
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
     };
 }

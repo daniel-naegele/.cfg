@@ -49,7 +49,7 @@ in
     borgbackup
     cifs-utils
     claude-code
-    claude-code-acp
+    claude-agent-acp
     cmake
     cmctl
     dagger
@@ -100,7 +100,7 @@ in
     nil
     ninja
     nixd
-    nixfmt-rfc-style
+    nixfmt
     nmap
     nodejs_22
     unstable.obsidian
@@ -148,7 +148,7 @@ in
     webex
     wireshark
     w3m
-    xorg.xprop
+    xprop
     yaml-language-server
     yq-go
     zip
@@ -174,6 +174,7 @@ in
       name = "Plata-Noir-Compact";
       package = pkgs.plata-theme;
     };
+    gtk4.theme = config.gtk.theme;
   };
 
   programs.firefox.enable = true;

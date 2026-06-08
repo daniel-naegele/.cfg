@@ -8,7 +8,7 @@ self: super: {
             sha256 = "07040f5pmqnc2fp5yrcywl2l5krmhr9rz7y3i9hgsqjkx660sgm6";
           })
           {
-            inherit (super) system;
+            system = super.stdenv.hostPlatform.system;
             config = { };
           }
         ).texlive.combined.scheme-full;

@@ -28,7 +28,7 @@ self: super:
           gnugrep
           gnused
           procps
-          xorg.xprop
+          xprop
           xorg.xset
           xorg.xvinfo
         ];

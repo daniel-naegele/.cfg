@@ -52,7 +52,7 @@
             "i44pc6.ppd.ipd.kit.edu" = "launch-tmux-workflow";
             "i44pc19" = "launch-tmux-workflow";
             "i44pc30" = "launch-tmux-workflow";
-            "DN-Laptop" = "launch-tmux-workflow";
+            "neon" = "launch-tmux-workflow";
             "nixos-lt" = "launch-kitty-workflow";
             "Daniel-PC" = "launch-tmux-workflow";
           }
