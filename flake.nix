@@ -75,11 +75,10 @@
               (import config)
             ];
 
-            # Use the same Nix configuration throughout the system.
-            # We really need to set ~/.config/nixpkgs/config.nix as well as import
-            # it in home-manager's nixpkgs.config; see the manpage.
+            # Write nixpkgs config for nix-shell/nix-build compatibility (legacy tools).
+            # nixpkgs.config is intentionally omitted: useGlobalPkgs = true means
+            # home-manager reuses the host's pkgsBySystem instance directly.
             xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs/config.nix;
-            nixpkgs.config = import ./nixpkgs/config.nix;
             xdg.configFile."nix/nix.conf".source = ./nix/nix.conf;
 
             # Re-expose self, nixpkgs and unsable as flakes. For use in nix-search, for example
