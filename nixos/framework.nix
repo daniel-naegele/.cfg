@@ -406,7 +406,6 @@
       "dialout"
       "tailscale"
       "kvm"
-      "adbusers"
       "plugdev"
     ];
     uid = 1000;

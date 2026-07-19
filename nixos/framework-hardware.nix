@@ -24,7 +24,7 @@
   boot.kernelParams = [ "resume_offset=149754929" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernel.sysctl = {
-    "vm.swappiness" = 1;
+    "vm.swappiness" = 180;
     "vm.page-cluster" = 0;
   };
   boot.extraModulePackages = [ ];
@@ -75,6 +75,7 @@
   zramSwap = {
     enable = true;
     memoryPercent = 50;
+    priority = 100;
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
