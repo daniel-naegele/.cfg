@@ -74,6 +74,7 @@ in
     gnomeExtensions.pop-shell
     gnomeExtensions.window-calls-extended
     gnomeExtensions.gsconnect
+    gnomeExtensions.caffeine
     go
     golangci-lint
     google-chrome

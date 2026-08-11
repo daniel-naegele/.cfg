@@ -31,6 +31,22 @@
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
+    autoEnrollKeys = {
+      enable = true;
+#      includeFirmwareBuiltinKeys = true;
+      includeMicrosoftKeys = false;
+      allowBrickingMyMachine = true;
+      autoReboot = true;
+    };
+    configurationLimit = 8;
+    measuredBoot = {
+      enable = true;
+      pcrs = [
+        0
+        4
+        7
+      ];
+    };
   };
   boot.initrd.luks.devices = {
     crypted = {
@@ -335,8 +351,6 @@
   };
 
   services.displayManager = {
-    autoLogin.enable = true;
-    autoLogin.user = "daniel";
     gdm.enable = true;
   };
 
