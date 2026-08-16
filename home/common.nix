@@ -59,6 +59,7 @@ in
     fd
     fluxcd
     ghc
+    github-cli
     grpcurl
     (pkgs.writeShellScriptBin "ghc94" ''exec -a $0 ${haskell.compiler.ghc94}/bin/ghc "$@"'')
     (pkgs.writeShellScriptBin "ghc96" ''exec -a $0 ${haskell.compiler.ghc96}/bin/ghc "$@"'')

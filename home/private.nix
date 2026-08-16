@@ -85,6 +85,7 @@ in
     helm-ls
     # gcc_multi # ld.bfd conflicts with binutils-wapper's
     hicolor-icon-theme
+    hujsonfmt
     img2pdf
     unstable.inkscape
     jetbrains.idea

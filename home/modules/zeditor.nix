@@ -27,6 +27,7 @@
       "proto"
       "helm"
       "kotlin"
+      "hujson"
     ];
 
     ## everything inside of these brackets are Zed options.
@@ -102,7 +103,22 @@
             };
           };
         };
+        HuJSON = {
+          formatter = {
+            external = {
+              command = "hujsonfmt";
+            };
+          };
+          format_on_save = "on";
+        };
 
+      };
+
+      file_types = {
+        HuJSON = [
+          "hujson"
+          "jwcc"
+        ];
       };
 
       lsp = {
