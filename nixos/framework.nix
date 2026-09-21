@@ -60,6 +60,7 @@
   };
   # Splash screen
   boot.plymouth.enable = true;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking = {
     hostName = "neon";
