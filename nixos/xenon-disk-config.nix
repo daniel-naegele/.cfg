@@ -114,10 +114,6 @@
           };
         };
         zpool = {
-          # Takes whatever's left in the VG after the swap LV above (order
-          # matters: swap is created first). Using 100%FREE instead of a
-          # hardcoded size avoids GB/GiB mismatches against the drive's
-          # decimal-TB marketing capacity.
           size = "100%FREE";
           content = {
             type = "zfs";
