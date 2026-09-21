@@ -95,3 +95,6 @@ Secrets are encrypted with age in `secrets/`. Two age keys are in `.sops.yaml`: 
 - User packages on personal laptop: add to `home.packages` in `home/private.nix`
 - Packages needed across all hosts: add to `home/common.nix`
 - For unstable packages: use `unstable.<package>` (the `unstable` arg is passed as `extraSpecialArgs`)
+
+# RULE:
+Never write too long comments. Usually the nix code is self-explanatory.
