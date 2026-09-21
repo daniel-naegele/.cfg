@@ -204,6 +204,7 @@ in
   programs.zsh = {
     enable = true;
     enableCompletion = true; # Works around an annoying home-manager+nix interaction
+    dotDir = "${config.xdg.configHome}/zsh";
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];

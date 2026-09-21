@@ -10,6 +10,7 @@
   imports = [
     ./personal-machine.nix
     ./xenon-disk-config.nix
+    ./xenon-hardware.nix
   ];
 
   # ---- Boot / secure boot / ZFS ----
@@ -20,6 +21,42 @@
   boot.initrd.systemd.enable = true;
   networking.hostId = "9b940dce"; # generated via: head -c4 /dev/urandom | od -A none -t x4
   services.zfs.autoScrub.enable = true;
+
+  # No nixos-hardware module for a custom-built desktop, so unlike the
+  # laptop this needs to be requested explicitly — without it linux-firmware
+  # isn't included at all and the iwlwifi card has no usable firmware.
+  hardware.enableRedistributableFirmware = true;
+
+  # Console/LUKS-prompt keyboard layout — override the laptop's "us" default.
+  console.keyMap = lib.mkForce "de";
+  # Desktop/KDE keyboard layout — laptop's shared "eu,de" (EurKEY primary)
+  # looks like US layout for plain letters. Just use "de" outright here.
+  services.xserver.xkb.layout = lib.mkForce "de";
+
+  # ssd870/hdd are LUKS with initrdUnlock = false (xenon-disk-config.nix) —
+  # unlock them here, post-root-mount, with a keyfile that only lives on
+  # zroot (so it's exactly as protected as the root passphrase). Root
+  # passphrase stays the only thing typed at boot. One-time keyfile
+  # generation/enrollment steps are in install.txt.
+  systemd.services.unlock-storage-disks = {
+    description = "Unlock ssd870/hdd LUKS containers with the zroot-resident keyfile";
+    before = [
+      "zfs-import-ssdpool.service"
+      "zfs-import-hddpool.service"
+    ];
+    wantedBy = [
+      "zfs-import-ssdpool.service"
+      "zfs-import-hddpool.service"
+    ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      ${pkgs.cryptsetup}/bin/cryptsetup open /dev/disk/by-partlabel/disk-ssd870-luks crypted-ssd870 --key-file /etc/cryptsetup-keys.d/storage.key --allow-discards
+      ${pkgs.cryptsetup}/bin/cryptsetup open /dev/disk/by-partlabel/disk-hdd-luks crypted-hdd --key-file /etc/cryptsetup-keys.d/storage.key
+    '';
+  };
   # Do NOT set boot.kernelPackages manually — `latestCompatibleLinuxPackages`
   # is deprecated; nixpkgs's default kernel on 26.05 is already ZFS-tested.
 

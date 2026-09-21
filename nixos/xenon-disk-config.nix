@@ -11,14 +11,13 @@
 # rather than combined/mirrored, since mixing an SSD and HDD in one vdev
 # caps performance at the HDD's speed).
 #
-# All three `luks` blocks are independently password-protected (no shared
-# keyfile) — at install time, give crypted-nvme, crypted-ssd870 and
-# crypted-hdd the SAME passphrase. With `boot.initrd.systemd.enable = true;`
-# (set in xenon.nix), systemd's cryptsetup caches whatever passphrase you
-# type in the initrd and retries it automatically on the other LUKS
-# volumes before prompting again — so in practice you're prompted once at
-# boot, not three times, while every disk still carries real independent
-# FDE (no plaintext keyfile on the unencrypted ESP).
+# Only crypted-nvme unlocks interactively in the initrd (it has to — it's
+# root). ssd870/hdd have `initrdUnlock = false;` and are instead unlocked
+# by a systemd service (xenon.nix) using a keyfile stored on the already-
+# decrypted zroot, once root is up — so you type one passphrase at boot,
+# and every disk still has real independent FDE (the keyfile is exactly as
+# protected as the root passphrase, since it only lives inside zroot).
+# See install.txt for the one-time keyfile-generation/enrollment steps.
 
 { ... }:
 {
@@ -69,6 +68,7 @@
             content = {
               type = "luks";
               name = "crypted-ssd870";
+              initrdUnlock = false; # unlocked post-boot via keyfile, see xenon.nix
               settings.allowDiscards = true;
               content = {
                 type = "zfs";
@@ -89,6 +89,7 @@
             content = {
               type = "luks";
               name = "crypted-hdd";
+              initrdUnlock = false; # unlocked post-boot via keyfile, see xenon.nix
               settings.allowDiscards = false; # no TRIM on spinning rust
               content = {
                 type = "zfs";
