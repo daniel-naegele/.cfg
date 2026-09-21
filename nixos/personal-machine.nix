@@ -50,8 +50,7 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking.networkmanager = {
-    # although Gnome activates nm by default, it's important we activate it
-    # here, too, so that NetworkManager-wait-online succeeds. But seems broken again in 22.11
+    # explicit so NetworkManager-wait-online succeeds
     enable = true;
     plugins = [ pkgs.networkmanager-openvpn ];
     dns = "dnsmasq";
@@ -322,6 +321,9 @@
   };
 
   hardware.bluetooth.enable = true;
+
+  # Native replacement for the GNOME GSConnect extension
+  programs.kdeconnect.enable = true;
 
   # Enable the X11 windowing system / keyboard layout (also feeds KWin/Wayland via localed).
   services.xserver = {

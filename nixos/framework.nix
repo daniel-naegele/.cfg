@@ -26,17 +26,9 @@
   };
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  services.udev.packages = with pkgs; [
-    gnome-settings-daemon
-  ];
-
-  services.desktopManager = {
-    gnome.enable = true;
-  };
-
-  services.displayManager = {
-    gdm.enable = true;
-  };
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManagers).
   services.libinput = {
@@ -49,14 +41,12 @@
 
     };
   };
-  services.gnome.core-apps.enable = true;
-  services.gnome.gnome-browser-connector.enable = true;
 
   ####################
   # POWER MANAGEMENT #
   ####################
 
-  # GNOME integrates with ppd but we want tlp because it works better
+  # Plasma integrates with ppd but we want tlp because it works better
   services.power-profiles-daemon.enable = false;
   services.tlp = {
     enable = true;

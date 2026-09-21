@@ -1,5 +1,5 @@
-# Wayland/KWin equivalent of xrandr.nix's mode-switching aliases, for xenon's
-# desk (2x24in) vs. TV (couch/gaming) monitor setups. KWin itself persists
+# Mode-switching aliases for xenon's desk (2x24in) vs. TV (couch/gaming)
+# monitor setups. KWin itself persists
 # per-output layouts keyed by connected-output topology, so most of the time
 # no manual switching is needed — this is only for when you want to pick a
 # mode while everything is plugged in simultaneously.

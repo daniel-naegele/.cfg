@@ -11,7 +11,9 @@
     nofib.url = "git+https://gitlab.haskell.org/ghc/nofib?ref=wip/input-utf8";
     nofib.flake = false;
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
-    nixos-wsl.url = "github:nix-community/nixos-wsl";
+    plasma-manager.url = "github:nix-community/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls";
     wakatime-ls.inputs.nixpkgs.follows = "nixpkgs";
     dagger.url = "github:dagger/nix";
@@ -29,7 +31,6 @@
     {
       self,
       nixpkgs,
-      nixos-wsl,
       sops-nix,
       lanzaboote,
       disko,
@@ -75,6 +76,7 @@
           {
             imports = [
               inputs.nix-doom-emacs.hmModule
+              inputs.plasma-manager.homeModules.plasma-manager
               (import config)
             ];
 
@@ -129,7 +131,6 @@
           inherit system;
           modules = [
             sops-nix.nixosModules.sops
-            nixos-wsl.nixosModules.wsl
             lanzaboote.nixosModules.lanzaboote
             disko.nixosModules.disko
             (
@@ -274,10 +275,6 @@
           system = "x86_64-linux";
           config = ./home/work.nix;
         };
-        Daniel-PC = {
-          system = "x86_64-linux";
-          config = ./home/wsl.nix;
-        };
       };
 
       homeManagerHostConfigurations = mapAttrs' mkHomeManagerHostConfiguration {
@@ -293,7 +290,6 @@
           system = "x86_64-linux";
           username = "sgraf-local";
         };
-        # Daniel-PC = { system = "x86_64-linux"; username = "nixos"; };
       };
 
       # Attribute set of hostnames to evaluated NixOS configurations. Consumed by `nixos-rebuild`
@@ -303,11 +299,6 @@
           system = "x86_64-linux";
           config = ./nixos/framework.nix;
           username = "daniel";
-        };
-        Daniel-PC = {
-          system = "x86_64-linux";
-          config = ./nixos/wsl.nix;
-          username = "nixos";
         };
         xenon = {
           system = "x86_64-linux";

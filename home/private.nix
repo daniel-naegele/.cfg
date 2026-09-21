@@ -31,9 +31,8 @@ in
 {
   imports = [
     ./common.nix
-    ./modules/dconf.nix
+    ./modules/kde.nix
     ./modules/kitty.nix
-    ./modules/rclone.nix
     ./modules/gpg.nix
     ./modules/zeditor.nix
   ];
@@ -65,16 +64,6 @@ in
     fontforge-gtk
     gcc
     gimp
-    gnome-tweaks
-    gnome-shell-extensions
-    gnomeExtensions.bluetooth-quick-connect
-    gnomeExtensions.clipboard-indicator
-    gnomeExtensions.color-picker
-    gnomeExtensions.impatience
-    gnomeExtensions.pop-shell
-    gnomeExtensions.window-calls-extended
-    gnomeExtensions.gsconnect
-    gnomeExtensions.caffeine
     go
     golangci-lint
     google-chrome
@@ -108,6 +97,8 @@ in
     unstable.obsidian
     obs-studio
     kdePackages.okular
+    kdePackages.gwenview
+    kdePackages.kate
     unstable.ollama
     pavucontrol
     pdfarranger
@@ -179,7 +170,20 @@ in
     gtk4.theme = config.gtk.theme;
   };
 
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    # Opts into the >=26.05 XDG default early; activation script below migrates the data.
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
+  };
+
+  home.activation.migrateFirefoxConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    old="$HOME/.mozilla/firefox"
+    new="${config.xdg.configHome}/mozilla/firefox"
+    if [ -d "$old" ] && [ ! -e "$new" ]; then
+      run mkdir -p "$(dirname "$new")"
+      run mv "$old" "$new"
+    fi
+  '';
 
   programs.ssh = {
     # enable = true;
@@ -208,16 +212,16 @@ in
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "application/pdf" = [ "org.gnome.Evince.desktop" ];
+        "application/pdf" = [ "org.kde.okular.desktop" ];
         "application/wps-office.pptx" = [ "impress.desktop" ];
         "audio/flac" = [ "vlc.desktop" ];
         "audio/mpeg" = [ "vlc.desktop" ];
-        "image/png" = [ "org.gnome.Loupe.desktop" ];
-        "image/jpeg" = [ "org.gnome.Loupe.desktop" ];
+        "image/png" = [ "org.kde.gwenview.desktop" ];
+        "image/jpeg" = [ "org.kde.gwenview.desktop" ];
         "text/html" = [ "firefox.desktop" ];
         "text/x-tex" = [ "dev.zed.Zed.desktop" ];
-        "text/x-log" = [ "org.gnome.TextEditor.desktop" ];
-        "text/xml" = [ "org.gnome.TextEditor.desktop" ];
+        "text/x-log" = [ "org.kde.kate.desktop" ];
+        "text/xml" = [ "org.kde.kate.desktop" ];
         "video/mp4" = [ "vlc.desktop" ];
         "video/quicktime" = [ "vlc.desktop" ];
         "x-scheme-handler/http" = [ "firefox.desktop" ];
@@ -236,13 +240,7 @@ in
     ".background-image".source = ./wallpapers/haskell.png;
   };
 
-  services.rclone = {
-    enable = true;
-    # dropbox only allows 3 devices in its free plan, so we are only installing it at home
-  };
-
   systemd.user.services = {
-    # Touchpad gestures, accessed by the smooth gestures gnome extension
     libinput-gestures = graphicalService "libinput gestures" "${pkgs.libinput-gestures
     }" "libinput-gestures";
   };

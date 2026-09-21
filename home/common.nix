@@ -31,7 +31,6 @@ in
 {
   imports = [
     modules/lazygit.nix
-    modules/rclone.nix
   ];
 
   home.packages = with pkgs; [
@@ -256,7 +255,7 @@ in
     shortcut = "a";
     clock24 = true;
     historyLimit = 50000;
-    terminal = "screen-256color"; # colors for kakoune etc.
+    terminal = "screen-256color";
     secureSocket = false; # /run/user/$(id -u) is escaped in ZSH and won't work
     plugins = with pkgs; [
       tmuxPlugins.cpu
@@ -292,11 +291,5 @@ in
   };
 
   home.stateVersion = "23.11";
-
-  services.rclone = {
-    enable = lib.mkDefault true;
-    mounts = {
-    };
-  };
 
 }
