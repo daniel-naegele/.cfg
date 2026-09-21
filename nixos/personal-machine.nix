@@ -186,6 +186,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.openssh.settings.PermitRootLogin = "no";
 
   services.openvpn = {
     servers = {
@@ -334,6 +335,7 @@
   ####################
 
   users.mutableUsers = false;
+  users.users.root.hashedPassword = "!"; # locked, no login
   users.users.daniel = {
     createHome = true;
     home = "/home/daniel";
