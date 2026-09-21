@@ -28,7 +28,7 @@
     autoEnrollKeys = {
       enable = true;
       includeMicrosoftKeys = true;
-      allowBrickingMyMachine = true;
+      allowBrickingMyMachine = false;
       autoReboot = true;
     };
     configurationLimit = 8;
