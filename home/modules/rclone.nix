@@ -21,13 +21,13 @@ in
           options = {
             from = mkOption {
               type = types.str;
-              example = ''dropbox:/shared'';
-              description = ''The rclone remote path to mount'';
+              example = "dropbox:/shared";
+              description = "The rclone remote path to mount";
             };
             to = mkOption {
               type = types.str;
-              example = ''/mnt/dropbox'';
-              description = ''The mountpoint in the local filesystem'';
+              example = "/mnt/dropbox";
+              description = "The mountpoint in the local filesystem";
             };
           };
         }

@@ -20,6 +20,8 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote.url = "github:nix-community/lanzaboote/v1.1.0";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   # Taken from https://github.com/davidtwco/veritas/blob/master/flake.nix
@@ -30,6 +32,7 @@
       nixos-wsl,
       sops-nix,
       lanzaboote,
+      disko,
       ...
     }@inputs:
     with inputs.nixpkgs.lib;
@@ -128,6 +131,7 @@
             sops-nix.nixosModules.sops
             nixos-wsl.nixosModules.wsl
             lanzaboote.nixosModules.lanzaboote
+            disko.nixosModules.disko
             (
               {
                 inputs,
@@ -254,6 +258,10 @@
           system = "x86_64-linux";
           config = ./home/private.nix;
         };
+        xenon = {
+          system = "x86_64-linux";
+          config = ./home/private.nix;
+        };
         "i44pc6.ppd.ipd.kit.edu" = {
           system = "x86_64-linux";
           config = ./home/work.nix;
@@ -300,6 +308,11 @@
           system = "x86_64-linux";
           config = ./nixos/wsl.nix;
           username = "nixos";
+        };
+        xenon = {
+          system = "x86_64-linux";
+          config = ./nixos/xenon.nix;
+          username = "daniel";
         };
       };
 
