@@ -101,8 +101,10 @@ in
     kdePackages.gwenview
     kdePackages.kate
     unstable.ollama
+    papirus-icon-theme
     pavucontrol
     pdfarranger
+    plata-theme
     podman
     postgresql_16
     unstable.pferd
@@ -158,18 +160,12 @@ in
 
   accounts.email.accounts.private.primary = true;
 
-  gtk = {
-    enable = true;
-    iconTheme = {
-      name = "Papirus";
-      package = pkgs.papirus-icon-theme;
-    };
-    theme = {
-      name = "Plata-Noir-Compact";
-      package = pkgs.plata-theme;
-    };
-    gtk4.theme = config.gtk.theme;
-  };
+  # KDE's own GTK theme sync (kded6 gtkconfig, re-applied every login from
+  # the active Plasma look-and-feel) fights home-manager for ~/.gtkrc-2.0
+  # and ~/.config/gtk-{3,4}.0/*, breaking `switch`'s backup step. Leaving
+  # this unmanaged so KDE is the sole owner; theme/icon packages above are
+  # still installed for it to use.
+  gtk.enable = false;
 
   programs.firefox = {
     enable = true;

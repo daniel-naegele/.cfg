@@ -35,13 +35,15 @@
   # Drop the laptop's caps:swapescape (Esc/CapsLock swapped) — unwanted here.
   services.xserver.xkb.options = lib.mkForce "eurosign:e";
 
-  # Measured boot's PCR-prediction step reliably fails with "State not
-  # recoverable" on this TPM after the CMOS clears + BIOS reflash we had to
-  # do to recover this board (leftover stale NV state, confirmed via
-  # `Esys_NV_DefineSpace`/TPM_RC_NV_DEFINED in the systemd-tpm2-setup log).
-  # Tried: BIOS TPM Clear, flushing TPM contexts, re-enabling the SHA384 PCR
-  # bank — none fixed it. Not load-bearing (no TPM-sealed unlock in use;
-  # LUKS/ZFS FDE is unaffected) — disabling to unblock.
+  # PCR-prediction reliably fails with "State not recoverable"
+  # (Esys_StartAuthSession, TPM_RC 0x9a2) on this TPM. Tried: BIOS TPM
+  # Clear ×several, full BIOS reflash, and (2026-09-22) a full `tpm2_clear`
+  # from the OS followed by a clean reboot to rule out mid-session state —
+  # identical failure every time, including against a freshly reset TPM.
+  # `systemd-pcrlock make-policy` reproduces it standalone, outside
+  # Lanzaboote entirely. Treating as an AMD fTPM firmware incompatibility;
+  # not revisiting without new information (e.g. a BIOS/AGESA update). Not
+  # load-bearing (no TPM-sealed unlock in use; LUKS/ZFS FDE is unaffected).
   boot.lanzaboote.measuredBoot.enable = lib.mkForce false;
 
   # Single-user desktop machine — skip the sudo password prompt.

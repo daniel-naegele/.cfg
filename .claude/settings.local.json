@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(nix eval *)",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Bash(git -C /home/daniel/code/nix/config status)",
+      "Bash(git -C /home/daniel/code/nix/config diff)"
     ]
   }
 }

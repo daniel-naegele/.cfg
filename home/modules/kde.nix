@@ -38,6 +38,8 @@ in
 
     session.sessionRestore.restoreOpenApplicationsOnLogin = "onLastLogout";
 
+    workspace.colorScheme = "BreezeDark";
+
     shortcuts = {
       ksmserver."Lock Session" = "Meta+L";
       kwin = {
