@@ -32,6 +32,20 @@
   # Desktop/KDE keyboard layout — laptop's shared "eu,de" (EurKEY primary)
   # looks like US layout for plain letters. Just use "de" outright here.
   services.xserver.xkb.layout = lib.mkForce "de";
+  # Drop the laptop's caps:swapescape (Esc/CapsLock swapped) — unwanted here.
+  services.xserver.xkb.options = lib.mkForce "eurosign:e";
+
+  # Measured boot's PCR-prediction step reliably fails with "State not
+  # recoverable" on this TPM after the CMOS clears + BIOS reflash we had to
+  # do to recover this board (leftover stale NV state, confirmed via
+  # `Esys_NV_DefineSpace`/TPM_RC_NV_DEFINED in the systemd-tpm2-setup log).
+  # Tried: BIOS TPM Clear, flushing TPM contexts, re-enabling the SHA384 PCR
+  # bank — none fixed it. Not load-bearing (no TPM-sealed unlock in use;
+  # LUKS/ZFS FDE is unaffected) — disabling to unblock.
+  boot.lanzaboote.measuredBoot.enable = lib.mkForce false;
+
+  # Single-user desktop machine — skip the sudo password prompt.
+  security.sudo.wheelNeedsPassword = false;
 
   # ssd870/hdd are LUKS with initrdUnlock = false (xenon-disk-config.nix) —
   # unlock them here, post-root-mount, with a keyfile that only lives on
@@ -107,6 +121,7 @@
     lutris
     mangohud
     nvidia-vaapi-driver # HW video decode via VA-API
+    nvtopPackages.nvidia
   ];
 
   # ---- Power (deliberately NOT the laptop's idle-hibernate policy —

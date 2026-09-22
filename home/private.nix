@@ -35,6 +35,7 @@ in
     ./modules/kitty.nix
     ./modules/gpg.nix
     ./modules/zeditor.nix
+    ./modules/kscreen.nix
   ];
 
   home.packages = with pkgs; [
