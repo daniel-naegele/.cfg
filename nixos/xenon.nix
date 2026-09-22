@@ -35,17 +35,6 @@
   # Drop the laptop's caps:swapescape (Esc/CapsLock swapped) — unwanted here.
   services.xserver.xkb.options = lib.mkForce "eurosign:e";
 
-  # PCR-prediction reliably fails with "State not recoverable"
-  # (Esys_StartAuthSession, TPM_RC 0x9a2) on this TPM. Tried: BIOS TPM
-  # Clear ×several, full BIOS reflash, and (2026-09-22) a full `tpm2_clear`
-  # from the OS followed by a clean reboot to rule out mid-session state —
-  # identical failure every time, including against a freshly reset TPM.
-  # `systemd-pcrlock make-policy` reproduces it standalone, outside
-  # Lanzaboote entirely. Treating as an AMD fTPM firmware incompatibility;
-  # not revisiting without new information (e.g. a BIOS/AGESA update). Not
-  # load-bearing (no TPM-sealed unlock in use; LUKS/ZFS FDE is unaffected).
-  boot.lanzaboote.measuredBoot.enable = lib.mkForce false;
-
   # Single-user desktop machine — skip the sudo password prompt.
   security.sudo.wheelNeedsPassword = false;
 
@@ -139,7 +128,7 @@
     programs.plasma.kscreenlocker = {
       autoLock = true;
       lockOnResume = true;
-      timeout = 10; # minutes
+      timeout = 30; # minutes
     };
     programs.plasma.powerdevil.AC = {
       powerButtonAction = "hibernate";
@@ -147,7 +136,7 @@
         action = "sleep";
         idleTimeout = 24 * 60 * 60; # 24h, in seconds
       };
-      turnOffDisplay.idleTimeout = 10 * 60; # 10 minutes, in seconds
+      turnOffDisplay.idleTimeout = 30 * 60; # 10 minutes, in seconds
     };
   };
 
