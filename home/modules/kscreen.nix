@@ -19,7 +19,7 @@ in
   home.packages = [ pkgs.kdePackages.kscreen ]; # provides kscreen-doctor
 
   programs.zsh.shellAliases = {
-    desk-mode = "kscreen-doctor output.${tv}.disable output.${mon1}.enable output.${mon2}.enable";
-    tv-mode = "kscreen-doctor output.${mon1}.disable output.${mon2}.disable output.${tv}.enable";
+    desk-mode = "kscreen-doctor output.${tv}.disable";
+    tv-mode = "kscreen-doctor output.${tv}.enable";
   };
 }

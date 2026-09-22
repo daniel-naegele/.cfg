@@ -126,8 +126,36 @@
 
   # ---- Power (deliberately NOT the laptop's idle-hibernate policy —
   # a tower shouldn't self-suspend mid-compile/download) ----
+  # Fallback for when nothing (i.e. no Plasma session) is inhibiting
+  # logind's own handling. See powerdevil.AC.powerButtonAction below for
+  # the setting that actually applies while Plasma is running.
   services.logind.settings.Login = {
     HandlePowerKey = "hibernate";
+  };
+
+  home-manager.users.daniel = {
+    programs.plasma.kscreenlocker = {
+      autoLock = true;
+      lockOnResume = true;
+      timeout = 10; # minutes
+    };
+    programs.plasma.powerdevil.AC = {
+      powerButtonAction = "hibernate";
+      autoSuspend = {
+        action = "sleep";
+        idleTimeout = 24 * 60 * 60; # 24h, in seconds
+      };
+      turnOffDisplay.idleTimeout = 10 * 60; # 10 minutes, in seconds
+    };
+  };
+
+  # Razer BlackWidow / Naga Trinity: drivers + userspace daemon.
+  # devicesOffOnScreensaver ties RGB lighting to the kscreenlocker timeout
+  # above, so it goes dark at the same 10-minute mark.
+  hardware.openrazer = {
+    enable = true;
+    users = [ "daniel" ];
+    devicesOffOnScreensaver = true;
   };
 
   # NOTE: Nvidia's kernel module is out-of-tree and isn't automatically
