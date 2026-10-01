@@ -136,7 +136,7 @@
         action = "sleep";
         idleTimeout = 24 * 60 * 60; # 24h, in seconds
       };
-      turnOffDisplay.idleTimeout = 30 * 60; # 10 minutes, in seconds
+      #turnOffDisplay.idleTimeout = 30 * 60; # 10 minutes, in seconds
     };
   };
 
@@ -147,6 +147,10 @@
     enable = true;
     users = [ "daniel" ];
     devicesOffOnScreensaver = true;
+  };
+
+  hardware.xpadneo = {
+    enable = true;
   };
 
   # NOTE: Nvidia's kernel module is out-of-tree and isn't automatically

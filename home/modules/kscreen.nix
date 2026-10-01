@@ -14,12 +14,25 @@ let
   tv = "HDMI-A-2";
   mon1 = "HDMI-A-1";
   mon2 = "DP-1";
+
+  # kscreen-doctor is a Qt/Wayland app — it needs WAYLAND_DISPLAY,
+  # XDG_RUNTIME_DIR and DBUS_SESSION_BUS_ADDRESS from the graphical
+  # session. A plain SSH/tty shell has none of those, so pull them from
+  # `systemctl --user` before dispatching, instead of failing with a Qt
+  # xcb error.
+  kscreen-doctor-session = pkgs.writeShellScript "kscreen-doctor-session" ''
+    if [ -z "$WAYLAND_DISPLAY" ]; then
+      export XDG_RUNTIME_DIR="''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+      export $(systemctl --user show-environment | grep -E '^(WAYLAND_DISPLAY|DBUS_SESSION_BUS_ADDRESS)=')
+    fi
+    exec kscreen-doctor "$@"
+  '';
 in
 {
   home.packages = [ pkgs.kdePackages.kscreen ]; # provides kscreen-doctor
 
   programs.zsh.shellAliases = {
-    desk-mode = "kscreen-doctor output.${mon1}.enable output.${mon2}.enable output.${tv}.disable";
-    tv-mode = "kscreen-doctor output.${tv}.enable output.${mon1}.disable output.${mon2}.disable";
+    desk-mode = "${kscreen-doctor-session} output.${mon1}.enable output.${mon2}.enable output.${tv}.disable";
+    tv-mode = "${kscreen-doctor-session} output.${tv}.enable output.${mon1}.disable output.${mon2}.disable";
   };
 }

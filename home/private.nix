@@ -107,6 +107,7 @@ in
     plata-theme
     podman
     postgresql_16
+    prismlauncher
     unstable.pferd
     pmutils
     package-version-server
@@ -227,6 +228,7 @@ in
         "x-scheme-handler/unknown" = [ "firefox.desktop" ];
         "x-scheme-handler/sgnl" = [ " signal.desktop " ];
         "x-scheme-handler/signalcaptcha" = [ "signal.desktop" ];
+        "x-scheme-handler/slack" = [ "slack.desktop" ];
       };
     };
   };
