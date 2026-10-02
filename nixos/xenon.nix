@@ -114,6 +114,7 @@
     mangohud
     nvidia-vaapi-driver # HW video decode via VA-API
     nvtopPackages.nvidia
+    polychromatic # Razer lighting GUI
   ];
 
   # ---- Power (deliberately NOT the laptop's idle-hibernate policy —

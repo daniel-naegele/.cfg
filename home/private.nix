@@ -190,7 +190,7 @@ in
   programs.git.settings.user.email = "daniel@naegele.dev";
 
   programs.zsh.shellAliases = {
-    upd = "sudo true && nix flake update --flake /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/ && . ~/.zshrc";
+    upd = "sudo true && nix flake update --flake /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/";
     switch = "sudo nixos-rebuild switch --flake /home/daniel/code/nix/config";
     ncg = "sudo nix-collect-garbage --delete-old #5";
   };

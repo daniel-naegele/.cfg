@@ -1,6 +1,4 @@
 {
-  pkgs,
-  lib,
   unstable,
   ...
 }:
@@ -28,6 +26,7 @@
       "helm"
       "kotlin"
       "hujson"
+      "terraform"
     ];
 
     ## everything inside of these brackets are Zed options.
@@ -51,8 +50,17 @@
           model = "claude-4-5-sonnet";
         };
       };
+      agent_panel = {
+        dock = "right";
+      };
       hour_format = "hour24";
       auto_update = false;
+      project_panel = {
+        dock = "left";
+      };
+      git_panel = {
+        dock = "right";
+      };
       terminal = {
         alternate_scroll = "off";
         blinking = "off";
@@ -70,7 +78,7 @@
           };
         };
         env = {
-          TERM = "alacritty";
+          TERM = "kitty";
         };
         font_family = "FiraCode Nerd Font";
         font_features = null;
