@@ -16,6 +16,7 @@
   # ---- Boot / secure boot / ZFS ----
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
+  boot.zfs.unsafeAllowHibernation = true; # no dual-boot/removable disks here, so safe
   # Also needed for LUKS passphrase reuse across the three disks, see the
   # comment on `disko.devices.disk` in xenon-disk-config.nix.
   boot.initrd.systemd.enable = true;
