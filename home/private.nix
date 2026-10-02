@@ -176,12 +176,7 @@
 
   xdg = {
     enable = true;
-    #dataFile = {
-    #  "icons/hicolor/128x128/apps/spotify.png".source = "${pkgs.spotify}/share/spotify/icons/spotify-linux-128.png";
-    #  "icons/hicolor/128x128/apps/code.png".source = ./vscode/icon-128.png;
-    #};
 
-    #    configFile."mimeapps.list".force = true; # https://github.com/nix-community/home-manager/issues/1213
     mimeApps = {
       enable = true;
       defaultApplications = {
@@ -214,5 +209,4 @@
     text = "kitty.desktop\n";
     force = true;
   };
-
 }

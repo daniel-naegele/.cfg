@@ -1,33 +1,11 @@
 {
   config,
   pkgs,
-  lib,
-  unstable,
   ...
 }:
 
 # Worth considering:
 # - [starship](https://starship.rs): Cool cross-shell prompt
-# - [sxhkd](https://github.com/baskerville/sxhkd): For X keyboard shortcuts
-# - muchsync: If I ever get the E-Mail stuff working
-# - xsuspend: Might be useful on the laptop
-# - getmail: Automatically fetch mail in a systemd service
-
-let
-  sqlcsv = pkgs.writeShellScriptBin "sql@csv" ''
-    db=$1
-
-    if [ $# -lt 2 ] || [ ! -f $db ]; then
-      echo "USAGE: $(basename $0) ./path/to/db.csv 'select avg(csv.Salary) from csv'"
-      echo "       Set \$SQL_CSV_SEP if you want a separator that is different to ;"
-      exit 1
-    fi
-
-    shift
-    # https://til.simonwillison.net/sqlite/one-line-csv-operations
-    exec -a $0 sqlite3 :memory: -cmd '.mode csv' -cmd ".separator ''${SQL_CSV_SEP:-;}" -cmd ".import $db csv" "$@"
-  '';
-in
 {
   imports = [
     modules/lazygit.nix
@@ -43,8 +21,6 @@ in
     bottom # alternative to top
     btop
     buf
-    cabal2nix
-    cabal-install
     cloc
     creduce
     dive
@@ -56,18 +32,10 @@ in
     fastfetch
     fd
     fluxcd
-    ghc
     github-cli
     grpcurl
-    (pkgs.writeShellScriptBin "ghc94" ''exec -a $0 ${haskell.compiler.ghc94}/bin/ghc "$@"'')
-    (pkgs.writeShellScriptBin "ghc96" ''exec -a $0 ${haskell.compiler.ghc96}/bin/ghc "$@"'')
     glow # CLI markdown viewer
     gnumake
-    # gthumb # can crop images # segfaults in ubuntu...
-    haskellPackages.ghcid
-    # haskellPackages.hkgr # Hackage release management, but it's broken
-    haskellPackages.hasktags
-    haskell-language-server
     htop
     iosevka
     jq # Manipulating JSON on the CLI
@@ -91,7 +59,6 @@ in
     sd
     stack
     # stack2nix # broken
-    sqlcsv
     ranger
     rename # prename -- https://stackoverflow.com/a/20657563/388010
     ripgrep
@@ -99,7 +66,6 @@ in
     tree
     unzip
     usbutils
-    xclip # Maybe use clipit instead?
     xdg-utils
     vlc
     wireguard-tools
@@ -238,7 +204,6 @@ in
       cdc = "cd ~/code/nix/config";
       cdnxt = "cd ~/code/rautemusik/nxt_radio";
       cdnix = "cd ~/code/nix/nixpkgs && git checkout master && git pull";
-      cdwasa = "/run/user/1000/gvfs/smb-share:server=sccfs.scc.kit.edu,share=oe/TM/VR/Mitglieder";
       nix-zsh = "nix-shell --command zsh";
       nix-stray-roots = "nix-store --gc --print-roots | egrep -v '^(/nix/var|/run/\\w+-system|\\{memory)' | cut -d' ' -f1";
       tmux-display = "export DISPLAY=$(tmux show-env | sed -n 's/^DISPLAY=//p')";
