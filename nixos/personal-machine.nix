@@ -325,11 +325,10 @@
   # Native replacement for the GNOME GSConnect extension
   programs.kdeconnect.enable = true;
 
-  # Enable the X11 windowing system / keyboard layout (also feeds KWin/Wayland via localed).
+  # Keyboard layout (feeds KWin/Wayland via localed).
   services.xserver = {
-    enable = true;
     xkb.layout = "eu,de";
-    xkb.options = "eurosign:e, caps:swapescape";
+    xkb.options = "eurosign:e";
   };
 
   ####################

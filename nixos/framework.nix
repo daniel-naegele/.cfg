@@ -35,18 +35,6 @@
   # looks like US layout for plain letters. Just use "de" outright here.
   services.xserver.xkb.layout = lib.mkForce "de";
 
-  # Enable touchpad support (enabled default in most desktopManagers).
-  services.libinput = {
-    # enable = true;
-    touchpad = {
-      naturalScrolling = true;
-      # We don't want natural scrolling on the track point or mouse
-      additionalOptions = ''MatchIsTouchpad "on"'';
-      # accelSpeed = "0.6";
-
-    };
-  };
-
   ####################
   # POWER MANAGEMENT #
   ####################

@@ -6,28 +6,6 @@
   ...
 }:
 
-let
-
-  graphicalService = descr: pkg: exe: {
-    Unit = {
-      Description = "${descr}";
-      Documentation = "man:${exe}(1)";
-      After = "graphical-session-pre.target";
-      PartOf = "graphical-session.target";
-    };
-
-    Service = {
-      ExecStart = "${pkg}/bin/${exe}";
-      Restart = "on-abnormal";
-    };
-
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
-  };
-
-in
-
 {
   imports = [
     ./common.nix
@@ -237,11 +215,6 @@ in
   home.homeDirectory = "/home/daniel";
   home.file = {
     ".background-image".source = ./wallpapers/haskell.png;
-  };
-
-  systemd.user.services = {
-    libinput-gestures = graphicalService "libinput gestures" "${pkgs.libinput-gestures
-    }" "libinput-gestures";
   };
 
   services.gnome-keyring.enable = true;
