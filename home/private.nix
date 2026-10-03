@@ -20,7 +20,6 @@
     anki
     ausweisapp
     ausweiskopie
-    baobab
     bitwarden-desktop
     bitwarden-cli
     binutils # ar and stuff
@@ -47,7 +46,6 @@
     golangci-lint
     google-chrome
     gopls
-    gpick
     gpu-screen-recorder
     gucharmap
     helm-ls
@@ -82,7 +80,6 @@
     papirus-icon-theme
     pavucontrol
     pdfarranger
-    plata-theme
     podman
     postgresql_16
     prismlauncher
@@ -213,10 +210,9 @@
 
   home.username = "daniel";
   home.homeDirectory = "/home/daniel";
-  home.file = {
-    ".background-image".source = ./wallpapers/haskell.png;
+  xdg.configFile."xdg-terminals.list" = {
+    text = "kitty.desktop\n";
+    force = true;
   };
-
-  services.gnome-keyring.enable = true;
 
 }
