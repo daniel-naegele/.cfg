@@ -85,7 +85,7 @@
 
   console = {
     font = "${pkgs.terminus_font}/share/consolefonts/ter-u28n.psf.gz";
-    keyMap = "us";
+    keyMap = "de";
   };
 
   # List packages installed in system profile. To search, run:
@@ -325,9 +325,13 @@
   # Native replacement for the GNOME GSConnect extension
   programs.kdeconnect.enable = true;
 
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+
   # Keyboard layout (feeds KWin/Wayland via localed).
   services.xserver = {
-    xkb.layout = "eu,de";
+    xkb.layout = "de";
     xkb.options = "eurosign:e";
   };
 

@@ -27,14 +27,6 @@
   # isn't included at all and the iwlwifi card has no usable firmware.
   hardware.enableRedistributableFirmware = true;
 
-  # Console/LUKS-prompt keyboard layout — override the laptop's "us" default.
-  console.keyMap = lib.mkForce "de";
-  # Desktop/KDE keyboard layout — laptop's shared "eu,de" (EurKEY primary)
-  # looks like US layout for plain letters. Just use "de" outright here.
-  services.xserver.xkb.layout = lib.mkForce "de";
-  # Drop the laptop's caps:swapescape (Esc/CapsLock swapped) — unwanted here.
-  services.xserver.xkb.options = lib.mkForce "eurosign:e";
-
   # Single-user desktop machine — skip the sudo password prompt.
   security.sudo.wheelNeedsPassword = false;
 
@@ -82,11 +74,6 @@
     options kvm_amd nested=1
   '';
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  # ---- KDE Plasma 6 (Wayland) ----
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
 
   # ---- Nvidia (RTX 3070 Ti / Ampere) ----
   services.xserver.videoDrivers = [ "nvidia" ];
