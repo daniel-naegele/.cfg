@@ -16,23 +16,6 @@ let
   '';
 in
 {
-  home.packages = with pkgs; [
-    # Toggle-style replacement for the GNOME caffeine extension: prevents
-    # sleep/idle while a marker process is running, kills it to re-allow sleep.
-    (writeShellScriptBin "caffeine" ''
-      pidfile="''${XDG_RUNTIME_DIR:-/tmp}/caffeine.pid"
-      if [ -f "$pidfile" ] && kill -0 "$(cat "$pidfile")" 2>/dev/null; then
-        kill "$(cat "$pidfile")"
-        rm -f "$pidfile"
-        echo "caffeine off"
-      else
-        ${systemd}/bin/systemd-inhibit --what=sleep:idle --why=caffeine sleep infinity &
-        echo $! > "$pidfile"
-        echo "caffeine on"
-      fi
-    '')
-  ];
-
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
   programs.plasma = {
@@ -51,15 +34,21 @@ in
       };
     };
 
-    input.touchpads = [
-      {
-        name = "PIXA3854:00 093A:0274 Touchpad";
-        vendorId = "093a";
-        productId = "0274";
-        naturalScroll = true;
-        tapToClick = true;
-      }
-    ];
+    input = {
+      touchpads = [
+        {
+          name = "PIXA3854:00 093A:0274 Touchpad";
+          vendorId = "093a";
+          productId = "0274";
+          naturalScroll = true;
+          tapToClick = true;
+        }
+      ];
+      keyboard = {
+        numlockOnStartup = "on";
+      };
+
+    };
 
     configFile.kwinrc.TabBox.LayoutName = "org.kde.breeze.desktop";
 
@@ -122,13 +111,32 @@ in
         command = "${config.programs.firefox.package}/bin/firefox";
       };
     };
-  };
 
-  # Not translated from dconf.nix - no confidently-correct KDE/KWin
-  # equivalent found, revisit via System Settings if still wanted:
-  # - workspaces-only-on-primary = false (KWin virtual desktops already
-  #   span all monitors, so this may be moot)
-  # - input-sources show-all-sources (keyboard layout indicator)
-  # - event-sounds = false (system/notification sound mute)
-  # - toggle-message-tray shortcut (no confirmed plasmashell action name)
+    kwin = {
+      # System Settings > Window Management > Desktop Effects > ...
+      effects = {
+        blur = {
+          enable = true;
+          noiseStrength = 0;
+          strength = 6;
+        };
+
+        slideBack.enable = true;
+
+        translucency.enable = true;
+
+        wobblyWindows.enable = true;
+      };
+
+      # System Settings > Window Management > Virtual Desktops
+      virtualDesktops = {
+        number = 3;
+        rows = 1;
+      };
+    };
+
+    session = {
+      general.askForConfirmationOnLogout = false;
+    };
+  };
 }
