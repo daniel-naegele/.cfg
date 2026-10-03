@@ -52,7 +52,6 @@ in
     dtrx
     # dust # Needs pypy (WTF)
     entr
-    evince
     eza
     fastfetch
     fd
@@ -106,6 +105,20 @@ in
     wireguard-tools
     wl-color-picker
     wl-clipboard
+
+    kdePackages.discover
+    kdePackages.kcalc
+    kdePackages.kcharselect
+    kdePackages.kclock
+    kdePackages.kcolorchooser
+    kdePackages.kolourpaint
+    kdePackages.ksystemlog
+    kdePackages.sddm-kcm
+    kdiff3
+    kdePackages.isoimagewriter
+    kdePackages.partitionmanager
+    hardinfo2
+    wayland-utils
     zoxide
   ];
 

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A Nix flake managing NixOS system configuration and home-manager user environments for multiple hosts. The primary host is `neon` (Framework 12th-gen Intel laptop) and there's also `xenon` (AMD/Nvidia tower) — both run NixOS with KDE Plasma 6. Additional home-manager-only configs exist for work machines (`i44pc*`).
+A Nix flake managing NixOS system configuration and home-manager user environments for multiple hosts. The primary host is `neon` (Framework 12th-gen Intel laptop) and there's also `xenon` (AMD/Nvidia tower) — both run NixOS with KDE Plasma 6.
 
 The flake pins to `nixos-26.05` stable, with selective packages pulled from `nixos-unstable` via the `unstable` argument.
 
@@ -20,9 +20,6 @@ sudo nixos-rebuild switch --flake /home/daniel/code/nix/config
 nix flake update --flake /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/
 
 # alias: upd
-
-# Home-manager only (for non-NixOS hosts)
-home-manager switch --flake /home/daniel/code/nix/config/
 
 # Garbage collect old generations
 sudo nix-collect-garbage --delete-old
@@ -46,15 +43,14 @@ The formatter is `nixfmt-rfc-style` (configured in `treefmt.toml`).
 
 ### Entry point: `flake.nix`
 
-Three types of outputs are built:
+Two types of outputs are built:
 
 1. **`nixosConfigurations`** — full NixOS system configs, consumed by `nixos-rebuild`. Currently: `neon`, `xenon`.
-2. **`homeConfigurations`** — home-manager-only configs for non-NixOS hosts (`username@hostname` keys). Currently: work machines `i44pc*`.
-3. **`homeManagerConfigurations`** (internal) — the home-manager modules used by both types, keyed by hostname. These are composed into NixOS configs via `home-manager.nixosModules.home-manager` or directly for standalone hosts.
+2. **`homeManagerConfigurations`** (internal) — the home-manager modules keyed by hostname, composed into NixOS configs via `home-manager.nixosModules.home-manager`.
 
 ### Directory layout
 
-- `flake.nix` — wires everything together; defines `pkgsBySystem` with overlays, `unstableBySystem`, and the three `mk*` builder functions
+- `flake.nix` — wires everything together; defines `pkgsBySystem` with overlays, `unstableBySystem`, and the `mk*` builder functions
 - `nixos/` — NixOS system-level modules
   - `personal-machine.nix` — shared config for both personal hosts: networking, fonts, printing, virtualisation, user definition
   - `framework.nix` — laptop-specific config: boot (lanzaboote secure boot + LUKS), KDE Plasma 6 (SDDM/Wayland), TLP power management
@@ -63,14 +59,12 @@ Three types of outputs are built:
 - `home/` — home-manager configurations
   - `common.nix` — shared packages and programs used across all hosts (zsh with oh-my-zsh, git, vim, tmux, fzf, direnv, broot, zoxide, etc.)
   - `private.nix` — personal hosts config (`neon`, `xenon`); imports `common.nix` plus graphical modules; defines `switch`/`upd`/`ncg` aliases
-  - `work.nix` — work machine config
   - `modules/` — reusable home-manager modules (kitty, lazygit, zeditor, gpg, kde)
 - `nixpkgs/`
   - `config.nix` — shared nixpkgs config (allowUnfree etc.)
   - `overlays/` — custom package overlays (wakatime-ls, dagger, texlive, etc.)
 - `nix/nix.conf` — nix daemon settings (experimental features, substituters, etc.)
 - `secrets/` — sops-nix encrypted secrets (`framework.yaml`, `github-pat.yaml`)
-- `go.sh` — bootstrap script for first-time home-manager setup on a new machine
 
 ### Key flake inputs
 

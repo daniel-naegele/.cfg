@@ -247,8 +247,7 @@
         );
 
       # Attribute set of hostnames to home-manager modules with the entire configuration for
-      # that host - consumed by the home-manager NixOS module for that host (if it exists)
-      # or by `mkHomeManagerHostConfiguration` for home-manager-only hosts.
+      # that host - consumed by the home-manager NixOS module for that host.
       homeManagerConfigurations = mapAttrs' mkHomeManagerConfiguration {
         neon = {
           system = "x86_64-linux";
@@ -261,33 +260,6 @@
         xenon = {
           system = "x86_64-linux";
           config = ./home/private.nix;
-        };
-        "i44pc6.ppd.ipd.kit.edu" = {
-          system = "x86_64-linux";
-          config = ./home/work.nix;
-        };
-        "i44pc19" = {
-          system = "x86_64-linux";
-          config = ./home/work.nix;
-        };
-        "i44pc30" = {
-          system = "x86_64-linux";
-          config = ./home/work.nix;
-        };
-      };
-
-      homeManagerHostConfigurations = mapAttrs' mkHomeManagerHostConfiguration {
-        "i44pc6.ppd.ipd.kit.edu" = {
-          system = "x86_64-linux";
-          username = "sgraf-local";
-        };
-        "i44pc19" = {
-          system = "x86_64-linux";
-          username = "sgraf-local";
-        };
-        "i44pc30" = {
-          system = "x86_64-linux";
-          username = "sgraf-local";
         };
       };
 
@@ -308,7 +280,6 @@
 
     in
     {
-      homeConfigurations = homeManagerHostConfigurations;
       nixosConfigurations = nixosHostConfigurations;
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
     };
