@@ -48,7 +48,7 @@ in
     binutils # ar and stuff
     borgbackup
     cifs-utils
-    claude-code
+    unstable.claude-code
     claude-agent-acp
     cmake
     cmctl
