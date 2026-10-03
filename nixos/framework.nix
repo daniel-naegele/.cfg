@@ -30,6 +30,11 @@
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
 
+  console.keyMap = lib.mkForce "de";
+  # Desktop/KDE keyboard layout — laptop's shared "eu,de" (EurKEY primary)
+  # looks like US layout for plain letters. Just use "de" outright here.
+  services.xserver.xkb.layout = lib.mkForce "de";
+
   # Enable touchpad support (enabled default in most desktopManagers).
   services.libinput = {
     # enable = true;
