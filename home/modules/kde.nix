@@ -33,12 +33,35 @@ in
     '')
   ];
 
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+
   programs.plasma = {
     enable = true;
 
     session.sessionRestore.restoreOpenApplicationsOnLogin = "onLastLogout";
 
-    workspace.colorScheme = "BreezeDark";
+    workspace = {
+      colorScheme = "BreezeDark";
+      iconTheme = "breeze-dark";
+      theme = "breeze-dark";
+      lookAndFeel = "org.kde.breezedark.desktop";
+      cursor = {
+        theme = "breeze_cursors";
+        size = 24;
+      };
+    };
+
+    input.touchpads = [
+      {
+        name = "PIXA3854:00 093A:0274 Touchpad";
+        vendorId = "093a";
+        productId = "0274";
+        naturalScroll = true;
+        tapToClick = true;
+      }
+    ];
+
+    configFile.kwinrc.TabBox.LayoutName = "org.kde.breeze.desktop";
 
     shortcuts = {
       ksmserver."Lock Session" = "Meta+L";
@@ -103,8 +126,6 @@ in
 
   # Not translated from dconf.nix - no confidently-correct KDE/KWin
   # equivalent found, revisit via System Settings if still wanted:
-  # - touchpad-gestures = false (was: disable GNOME's built-in touchpad
-  #   gestures since libinput-gestures runs standalone, see private.nix)
   # - workspaces-only-on-primary = false (KWin virtual desktops already
   #   span all monitors, so this may be moot)
   # - input-sources show-all-sources (keyboard layout indicator)
