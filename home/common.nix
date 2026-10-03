@@ -229,8 +229,8 @@ in
       nix-zsh = "nix-shell --command zsh";
       nix-stray-roots = "nix-store --gc --print-roots | egrep -v '^(/nix/var|/run/\\w+-system|\\{memory)' | cut -d' ' -f1";
       tmux-display = "export DISPLAY=$(tmux show-env | sed -n 's/^DISPLAY=//p')";
-      setclip = "xclip -selection clipboard -in";
-      getclip = "xclip -selection clipboard -out";
+      setclip = "wl-copy";
+      getclip = "wl-paste";
       e = "kak";
       exf = "fzf --exact"; # not FuZzy, but EXact
       k = "kubectl";
