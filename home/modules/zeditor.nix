@@ -27,6 +27,7 @@
       "kotlin"
       "hujson"
       "terraform"
+      "sql"
     ];
 
     ## everything inside of these brackets are Zed options.
