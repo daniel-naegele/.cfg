@@ -5,7 +5,7 @@
 keys:
   - &admin_daniel age1yvcq2p43h023m8ds5qjyc96p48kd4p4f8f7hux8dsjcv7tfehvaqjut87h
   - &admin_backup age1yzhxreet79v0hk8wzsqxtrn3fvala7zk5edxa85ydaxum8jfa9tsa0kjck
-  - &machine_framework age1df9dcsv6kayhd6ymzc2sxhnnncgayljesrwszrsj0w48nt8af5xqma94lp
+  - &machine_framework age1hzgjhhu5n6czrgdwmutrfq3trd3v20sxf0xxt85ul4fuhhlhk9xqeql38v
   - &machine_xenon age10tus9p75mxdz64sxllfqphk4ryhhc32msc0p0tffem6z8c9wyewqj87hzs
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini|key)$
