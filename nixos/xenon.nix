@@ -37,6 +37,16 @@
   # generation/enrollment steps are in install.txt.
   systemd.services.unlock-storage-disks = {
     description = "Unlock ssd870/hdd LUKS containers with the zroot-resident keyfile";
+    # Default deps (After=basic.target) create a cycle via local-fs.target.
+    unitConfig.DefaultDependencies = false;
+    requires = [
+      "dev-disk-by\\x2dpartlabel-disk\\x2dssd870\\x2dluks.device"
+      "dev-disk-by\\x2dpartlabel-disk\\x2dhdd\\x2dluks.device"
+    ];
+    after = [
+      "dev-disk-by\\x2dpartlabel-disk\\x2dssd870\\x2dluks.device"
+      "dev-disk-by\\x2dpartlabel-disk\\x2dhdd\\x2dluks.device"
+    ];
     before = [
       "zfs-import-ssdpool.service"
       "zfs-import-hddpool.service"
