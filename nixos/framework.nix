@@ -15,16 +15,16 @@
   imports = [
     # Include the results of the hardware scan.
     ./framework-hardware.nix
+    ./neon-disk-config.nix
     inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
     ./personal-machine.nix
   ];
 
-  boot.initrd.luks.devices = {
-    crypted = {
-      device = "/dev/disk/by-uuid/1c4c0c60-5849-4cd2-9c2a-22008be3b7ce";
-    };
+  networking.hostId = "2221d4e0";
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 180;
+    "vm.page-cluster" = 0;
   };
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   ####################
   # POWER MANAGEMENT #
@@ -73,7 +73,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "26.05"; # reinstalled on ZFS
 
   # Apparently there is not much sense in doing this, because it doesn't update
   # the lock file (duh)

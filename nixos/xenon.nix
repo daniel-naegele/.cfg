@@ -12,15 +12,8 @@
     ./xenon-hardware.nix
   ];
 
-  # ---- Boot / secure boot / ZFS ----
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.zfs.forceImportRoot = false;
-  boot.zfs.unsafeAllowHibernation = true; # no dual-boot/removable disks here, so safe
-  # Also needed for LUKS passphrase reuse across the three disks, see the
-  # comment on `disko.devices.disk` in xenon-disk-config.nix.
-  boot.initrd.systemd.enable = true;
+  # ---- Boot / secure boot / ZFS (shared ZFS settings in personal-machine.nix) ----
   networking.hostId = "9b940dce"; # generated via: head -c4 /dev/urandom | od -A none -t x4
-  services.zfs.autoScrub.enable = true;
 
   # No nixos-hardware module for a custom-built desktop, so unlike the
   # laptop this needs to be requested explicitly — without it linux-firmware
@@ -67,11 +60,6 @@
   # Do NOT set boot.kernelPackages manually — `latestCompatibleLinuxPackages`
   # is deprecated; nixpkgs's default kernel on 26.05 is already ZFS-tested.
 
-  zramSwap = {
-    enable = true;
-    memoryPercent = 50;
-    priority = 100;
-  };
   # The LVM swap LV's `resumeDevice = true;` + `priority = -2;` (set in
   # xenon-disk-config.nix) wires boot.resumeDevice and swap priority
   # automatically — no manual boot.kernelParams resume= or swapDevices

@@ -49,6 +49,20 @@
   boot.plymouth.enable = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  # ZFS root (disko). Never force-import: refusing a pool another system
+  # touched is what keeps hibernation resume from corrupting it.
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  boot.zfs.unsafeAllowHibernation = true;
+  boot.initrd.systemd.enable = true;
+  services.zfs.autoScrub.enable = true;
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50;
+    priority = 100;
+  };
+
   networking.networkmanager = {
     # explicit so NetworkManager-wait-online succeeds
     enable = true;
