@@ -14,6 +14,7 @@
     ./modules/gpg.nix
     ./modules/zeditor.nix
     ./modules/kscreen.nix
+    ./modules/wakatime.nix
   ];
 
   home.packages = with pkgs; [
@@ -116,7 +117,6 @@
     vlc
     vorta
     vscode-langservers-extracted
-    wakatime-cli
     webex
     wireshark
     w3m
@@ -196,9 +196,14 @@
         "x-scheme-handler/https" = [ "firefox.desktop" ];
         "x-scheme-handler/about" = [ "firefox.desktop" ];
         "x-scheme-handler/unknown" = [ "firefox.desktop" ];
-        "x-scheme-handler/sgnl" = [ " signal.desktop " ];
+        "x-scheme-handler/sgnl" = [ "signal.desktop" ];
         "x-scheme-handler/signalcaptcha" = [ "signal.desktop" ];
         "x-scheme-handler/slack" = [ "slack.desktop" ];
+        "x-scheme-handler/jetbrains" = [ "jetbrainsd.desktop" ];
+        "x-scheme-handler/bitwarden" = [ "bitwarden.desktop" ];
+        "x-scheme-handler/termius" = [ "termius-app.desktop" ];
+        "x-scheme-handler/ssh" = [ "kitty-open.desktop" ];
+        "x-scheme-handler/claude-cli" = [ "claude-code-url-handler.desktop" ];
       };
     };
   };
