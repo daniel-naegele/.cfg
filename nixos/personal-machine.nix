@@ -13,11 +13,15 @@
 
 {
   sops = {
-    defaultSopsFile = ../secrets/framework.yaml;
+    defaultSopsFile = ../secrets/personal.yaml;
     secrets = {
       ovpn_wg_zr = {
         owner = "daniel";
         mode = "0600";
+      };
+      wakatime_api_key = {
+        owner = "daniel";
+        mode = "0400";
       };
     };
   };

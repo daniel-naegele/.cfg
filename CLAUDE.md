@@ -64,7 +64,7 @@ Two types of outputs are built:
   - `config.nix` — shared nixpkgs config (allowUnfree etc.)
   - `overlays/` — custom package overlays (wakatime-ls, dagger, texlive, etc.)
 - `nix/nix.conf` — nix daemon settings (experimental features, substituters, etc.)
-- `secrets/` — sops-nix encrypted secrets (`framework.yaml`, `github-pat.yaml`)
+- `secrets/` — sops-nix encrypted secrets (`personal.yaml`, `github-pat.yaml`)
 
 ### Key flake inputs
 
