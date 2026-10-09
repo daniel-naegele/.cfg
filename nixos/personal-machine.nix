@@ -376,6 +376,7 @@
       "dialout"
       "tailscale"
       "kvm"
+      "podman"
       "plugdev"
     ];
     uid = 1000;

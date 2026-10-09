@@ -168,6 +168,8 @@
     upd = "sudo true && nix flake update --flake /home/daniel/code/nix/config/ && sudo nixos-rebuild switch --flake /home/daniel/code/nix/config/";
     switch = "sudo nixos-rebuild switch --flake /home/daniel/code/nix/config";
     ncg = "sudo nix-collect-garbage --delete-old #5";
+    # rootful engine: rootless one gets no /dev/kvm (dagger#13827)
+    dagger = "CONTAINER_HOST=unix:///run/podman/podman.sock dagger";
   };
 
   programs.vscode = {
