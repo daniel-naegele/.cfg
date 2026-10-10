@@ -188,6 +188,7 @@
         "audio/mpeg" = [ "vlc.desktop" ];
         "image/png" = [ "org.kde.gwenview.desktop" ];
         "image/jpeg" = [ "org.kde.gwenview.desktop" ];
+        "application/rss+xml" = [ "dev.zed.Zed.desktop" ];
         "text/html" = [ "firefox.desktop" ];
         "text/x-tex" = [ "dev.zed.Zed.desktop" ];
         "text/x-log" = [ "org.kde.kate.desktop" ];
@@ -206,6 +207,8 @@
         "x-scheme-handler/termius" = [ "termius-app.desktop" ];
         "x-scheme-handler/ssh" = [ "kitty-open.desktop" ];
         "x-scheme-handler/claude-cli" = [ "claude-code-url-handler.desktop" ];
+        "x-scheme-handler/discord" = [ "vesktop.desktop" ];
+        "x-scheme-handler/msteams" = [ "teams-for-linux.desktop" ];
       };
     };
   };
