@@ -52,6 +52,9 @@
   # Splash screen
   boot.plymouth.enable = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  # Static qemu is registered with the F flag, so aarch64 binaries also run inside
+  # chroots (e.g. nixos-install for the Raspberry Pis) and the nix sandbox.
+  boot.binfmt.preferStaticEmulators = true;
 
   # ZFS root (disko). Never force-import: refusing a pool another system
   # touched is what keeps hibernation resume from corrupting it.

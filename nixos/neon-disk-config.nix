@@ -57,13 +57,13 @@
           size = "100%FREE";
           content = {
             type = "zfs";
-            pool = "zroot";
+            pool = "zneon";
           };
         };
       };
     };
 
-    zpool.zroot = {
+    zpool.zneon = {
       type = "zpool";
       rootFsOptions = {
         mountpoint = "none";
