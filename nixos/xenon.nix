@@ -109,6 +109,7 @@
   services.logind.settings.Login = {
     HandlePowerKey = "hibernate";
   };
+  networking.networkmanager.wifi.powersave = false; # keep ssh/tailscale responsive
 
   home-manager.users.daniel = {
     programs.plasma.kscreenlocker = {
@@ -118,10 +119,7 @@
     };
     programs.plasma.powerdevil.AC = {
       powerButtonAction = "hibernate";
-      autoSuspend = {
-        action = "sleep";
-        idleTimeout = 24 * 60 * 60; # 24h, in seconds
-      };
+      autoSuspend.action = "nothing"; # ssh doesn't count as activity, so never idle-sleep
       #turnOffDisplay.idleTimeout = 30 * 60; # 10 minutes, in seconds
     };
   };
