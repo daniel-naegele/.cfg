@@ -308,6 +308,12 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
+    # Re-applied via `tailscale set` on every boot/switch (tailscaled-set.service),
+    # unlike extraUpFlags which only apply with authKeyFile on first login.
+    extraSetFlags = [
+      "--operator=daniel"
+      "--accept-routes"
+    ];
   };
 
   security.pki.certificateFiles = [ "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" ];
