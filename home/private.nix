@@ -101,6 +101,7 @@
     slack
     sops
     spotify
+    supertuxkart
     teams-for-linux
     termius
     texlab
@@ -209,6 +210,9 @@
         "x-scheme-handler/claude-cli" = [ "claude-code-url-handler.desktop" ];
         "x-scheme-handler/discord" = [ "vesktop.desktop" ];
         "x-scheme-handler/msteams" = [ "teams-for-linux.desktop" ];
+      };
+      associations.added = {
+        "x-scheme-handler/slack" = [ "slack.desktop" ];
       };
     };
   };
