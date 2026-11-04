@@ -20,6 +20,18 @@
     ./personal-machine.nix
   ];
 
+  # Joulescope scheiße
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "joulescope-udev-rules";
+      destination = "/etc/udev/rules.d/70-joulescope.rules";
+      text = ''
+        SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="0e88", MODE="0660", TAG+="uaccess"
+        SUBSYSTEM=="usb", ATTRS{idVendor}=="16d0", ATTRS{idProduct}=="10ba", MODE="0660", TAG+="uaccess"
+      '';
+    })
+  ];
+
   networking.hostId = "2221d4e0";
   boot.kernel.sysctl = {
     "vm.swappiness" = 180;
