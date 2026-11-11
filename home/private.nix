@@ -173,9 +173,9 @@
     dagger = "CONTAINER_HOST=unix:///run/podman/podman.sock dagger";
   };
 
-  programs.vscode = {
-    enable = true;
-  };
+  #programs.vscode = {
+  #  enable = true;
+  #};
 
   xdg = {
     enable = true;
