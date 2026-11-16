@@ -48,13 +48,15 @@
       "zfs-import-ssdpool.service"
       "zfs-import-hddpool.service"
     ];
+    # Restart on switch would fail on already-open mappers and drop to emergency mode.
+    restartIfChanged = false;
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
     };
     script = ''
-      ${pkgs.cryptsetup}/bin/cryptsetup open /dev/disk/by-partlabel/disk-ssd870-luks crypted-ssd870 --key-file /etc/cryptsetup-keys.d/storage.key --allow-discards
-      ${pkgs.cryptsetup}/bin/cryptsetup open /dev/disk/by-partlabel/disk-hdd-luks crypted-hdd --key-file /etc/cryptsetup-keys.d/storage.key
+      [ -e /dev/mapper/crypted-ssd870 ] || ${pkgs.cryptsetup}/bin/cryptsetup open /dev/disk/by-partlabel/disk-ssd870-luks crypted-ssd870 --key-file /etc/cryptsetup-keys.d/storage.key --allow-discards
+      [ -e /dev/mapper/crypted-hdd ] || ${pkgs.cryptsetup}/bin/cryptsetup open /dev/disk/by-partlabel/disk-hdd-luks crypted-hdd --key-file /etc/cryptsetup-keys.d/storage.key
     '';
   };
   # Do NOT set boot.kernelPackages manually — `latestCompatibleLinuxPackages`
