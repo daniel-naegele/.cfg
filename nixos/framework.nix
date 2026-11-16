@@ -33,10 +33,6 @@
   ];
 
   networking.hostId = "2221d4e0";
-  boot.kernel.sysctl = {
-    "vm.swappiness" = 180;
-    "vm.page-cluster" = 0;
-  };
 
   ####################
   # POWER MANAGEMENT #

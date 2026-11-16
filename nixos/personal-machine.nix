@@ -69,6 +69,10 @@
     memoryPercent = 50;
     priority = 100;
   };
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 180;
+    "vm.page-cluster" = 0;
+  };
 
   networking.networkmanager = {
     # explicit so NetworkManager-wait-online succeeds
